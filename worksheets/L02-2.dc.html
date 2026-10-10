@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第2課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 2, p: 2, start: 3,
+      t: 'ほんの 気持[きも]ちです',
+      ex: [
+        { k: 'picqa', t: 'Что это? Ответь', jt: 'なんですか', h: 'Ответь полным предложением: それは … です。',
+          items: [
+            { img: 'camera', q: 'これは 何[なん]ですか。', a: 'それは カメラです。' },
+            { img: 'tv', q: 'これは 何[なん]ですか。' },
+            { img: 'pencil', q: 'これは 何[なん]ですか。' },
+            { img: 'chair', q: 'これは 何[なん]ですか。' }
+          ] },
+        { k: 'picqa', t: 'Да или нет?', jt: 'はい・いいえ', h: 'Ответь: はい、そうです。 или いいえ、そうじゃ ありません。',
+          items: [
+            { img: 'notebook', q: 'これは 本[ほん]ですか。', a: 'いいえ、そうじゃ ありません。' },
+            { img: 'dict', q: 'これは 辞書[じしょ]ですか。' },
+            { img: 'coffee', q: 'これは コーヒーですか。' },
+            { img: 'choco', q: 'これは 新聞[しんぶん]ですか。' }
+          ] },
+        { k: 'order', t: 'Составь предложение', jt: 'ならべかえ', h: 'Расставь карточки по порядку и запиши предложение.',
+          items: [
+            { w: ['の', 'これは', '本[ほん]', 'です', 'わたし'] },
+            { w: ['ですか', 'その', 'だれの', 'かばんは'] },
+            { w: ['ですか', '本[ほん]', 'あれは', '何[なん]の'] }
+          ] }
+      ],
+      can: ['спросить «что это?» и «чьё это?»', 'различать これ・それ・あれ и この・その・あの']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

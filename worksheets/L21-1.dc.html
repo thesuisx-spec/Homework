@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第21課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 21, p: 1,
+      t: '私[わたし]も そう 思[おも]います',
+      ru: 'Я думаю, что… Он сказал, что…',
+      hero: 'earth',
+      memo: [
+        { p: 'простая форма + と 思[おも]います', e: 'あした 雨[あめ]が 降[ふ]ると 思[おも]います。', r: 'я думаю, что …' },
+        { p: '「…」と 言[い]います', e: '寝[ね]る まえに「お休[やす]みなさい」と 言[い]います。', r: 'говорят «…»' },
+        { p: '～と 言[い]って いました', e: 'ミラーさんは あした 休[やす]むと 言[い]って いました。', r: 'он сказал, что …' },
+        { p: '～でしょう？', e: 'パーティーに 行[い]くでしょう？', r: 'ведь …, правда?' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['漫画[まんが]', 'ニュース', '地球[ちきゅう]', '月[つき]', '試合[しあい]', '自動車[じどうしゃ]', '交通[こうつう]', '物価[ぶっか]'],
+          items: [{ img: 'manga', a: '漫画[まんが]' }, { img: 'moon' }, { img: 'signal' }, { img: 'news' }, { img: 'money' }, { img: 'earth' }, { img: 'soccer' }, { img: 'car' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'と おもいます', h: 'Перед と — простая форма. У な-прил. и сущ. — だと.',
+          items: [
+            { l: 'あした 雨[あめ]が', o: ['降[ふ]ると', '降[ふ]りますと'], pick: 0, r: '思[おも]います。' },
+            { l: '日本[にほん]は 物価[ぶっか]が', o: ['高[たか]いと', '高[たか]いだと'], r: '思[おも]います。' },
+            { l: '先生[せんせい]は あした テストが', o: ['あると', 'あるだと'], r: '言[い]って いました。' },
+            { l: 'この 町[まち]は 静[しず]か', o: ['だと', 'と'], r: '思[おも]います。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

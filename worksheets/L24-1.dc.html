@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第24課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 24, p: 1,
+      t: '手伝[てつだ]って くれますか',
+      ru: 'Помощь и подарки: あげる, もらう, くれる',
+      hero: 'grandma',
+      memo: [
+        { p: '(私[わたし]に) くれます', e: '母[はは]は 私[わたし]に セーターを くれました。', r: 'кто-то дарит мне' },
+        { p: 'Vて あげます', e: '木村[きむら]さんに 本[ほん]を 貸[か]して あげました。', r: 'делаю для кого-то' },
+        { p: 'Vて もらいます', e: '山田[やまだ]さんに 地図[ちず]を 書[か]いて もらいました。', r: 'мне сделали (я получил помощь)' },
+        { p: 'Vて くれます', e: '佐藤[さとう]さんが 傘[かさ]を 貸[か]して くれました。', r: 'кто-то сделал для меня' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['おじいさん', 'おばあさん', '引[ひ]っ越[こ]し', 'お菓子[かし]', 'ホームステイ', 'プレゼント', 'コーヒー', '地図[ちず]'],
+          items: [{ img: 'grandpa', a: 'おじいさん' }, { img: 'wagashi' }, { img: 'map' }, { img: 'grandma' }, { img: 'coffee' }, { img: 'moving' }, { img: 'present' }, { img: 'homestay' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'あげる・もらう・くれる', h: 'くれます — когда что-то дают МНЕ.',
+          items: [
+            { l: '母[はは]は 私[わたし]に セーターを', o: ['くれました', 'あげました'], pick: 0, r: '。' },
+            { l: '私[わたし]は 友達[ともだち]に 本[ほん]を', o: ['あげました', 'くれました'], r: '。' },
+            { l: '私[わたし]は 山田[やまだ]さんに 引[ひ]っ越[こ]しを 手伝[てつだ]って', o: ['もらいました', 'くれました'], r: '。' },
+            { l: '佐藤[さとう]さんが 傘[かさ]を 貸[か]して', o: ['くれました', 'もらいました'], r: '。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

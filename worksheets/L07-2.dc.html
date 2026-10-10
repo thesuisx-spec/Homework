@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第7課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 7, p: 2, start: 3,
+      t: 'ごめんください',
+      ex: [
+        { k: 'picqa', t: 'Чем? Ответь', jt: 'なんで',  h: 'Посмотри на картинку и ответь: …で …ます。',
+          items: [
+            { img: 'hashi', q: '何[なん]で ご飯[はん]を 食[た]べますか。', a: 'はしで 食[た]べます。' },
+            { img: 'spoon', q: '何[なん]で カレーを 食[た]べますか。' },
+            { img: 'scissors', q: '何[なん]で 紙[かみ]を 切[き]りますか。' },
+            { img: 'computer', q: '何[なん]で レポートを 書[か]きますか。' }
+          ] },
+        { k: 'fill', t: 'Вставь слово из рамки', jt: 'あげます・もらいます', h: 'Слова можно использовать несколько раз.',
+          bank: ['に', 'を', 'で', 'あげました', 'もらいました'],
+          items: [
+            { a: 1, t: '私[わたし]は 母[はは]((に)) 花[はな]を あげました。' },
+            { t: '私[わたし]は 父[ちち]___ ネクタイ___ あげました。' },
+            { t: '私[わたし]は 友達[ともだち]に 本[ほん]を ______ 。' },
+            { t: 'ミラーさんは 佐藤[さとう]さん___ チョコレートを もらいました。' },
+            { t: '「Thank you」は 日本語[にほんご]___ 何[なん]ですか。' }
+          ] },
+        { k: 'lines', t: 'А ты? Ответь о себе', jt: 'あなたは？', h: 'Ответь полным предложением.',
+          items: [
+            { q: '誕生日[たんじょうび]に 何[なに]を もらいましたか。' },
+            { q: 'お母[かあ]さんの 誕生日[たんじょうび]に 何[なに]を あげますか。' }
+          ] }
+      ],
+      can: ['сказать, чем я что-то делаю (で)', 'рассказать, что подарил и что получил']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

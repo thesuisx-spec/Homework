@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第17課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 17, p: 2, start: 3,
+      t: 'どう しましたか',
+      ex: [
+        { k: 'picqa', t: 'Совет врача', jt: 'いしゃの アドバイス', h: 'Закончи фразу: ～なければ なりません / ～ないで ください.',
+          items: [
+            { img: 'medicine', q: '毎日[まいにち] 薬[くすり]を', a: '飲[の]まなければ なりません。' },
+            { img: 'ofuro', q: '今日[きょう]は お風呂[ふろ]に', post: 'ください。' },
+            { img: 'thermo', q: '熱[ねつ]が あります。会社[かいしゃ]へ', post: 'ください。' },
+            { img: 'passport', q: '外国[がいこく]へ 行[い]きます。パスポートを', post: 'なりません。' }
+          ] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'なければ・なくても', h: 'なければ なりません — нужно, なくても いいです — можно не.',
+          items: [
+            { l: '日曜日[にちようび]は 会社[かいしゃ]へ 行[い]かなくても', o: ['いいです', 'なりません'], pick: 0, r: '。' },
+            { l: '毎日[まいにち] 薬[くすり]を 飲[の]まなければ', o: ['なりません', 'いいです'], r: '。' },
+            { l: 'ここで たばこを', o: ['吸[す]わないで', '吸[す]わなくて'], r: 'ください。' },
+            { l: 'レポートは 金曜日[きんようび]', o: ['までに', 'まで'], r: '出[だ]して ください。' },
+            { l: 'うちの 中[なか]では 靴[くつ]を', o: ['脱[ぬ]がなければ', '脱[ぬ]いでなければ'], r: 'なりません。' }
+          ] },
+        { k: 'lines', t: 'А ты? Ответь о себе', jt: 'あなたは？', h: 'Ответь полным предложением.',
+          items: [
+            { q: '毎日[まいにち] 何[なに]を しなければ なりませんか。' },
+            { q: '日曜日[にちようび]は 何[なに]を しなくても いいですか。' }
+          ] }
+      ],
+      can: ['попросить не делать: ～ないで ください', 'сказать, что нужно / можно не делать']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

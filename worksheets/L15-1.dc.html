@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第15課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 15, p: 1,
+      t: 'ご家族[かぞく]は？',
+      ru: 'Можно или нельзя? Рассказываем о семье',
+      hero: 'no_smoke',
+      memo: [
+        { p: 'Vても いいですか', e: '写真[しゃしん]を 撮[と]っても いいですか。', r: 'можно …?' },
+        { p: 'Vては いけません', e: 'ここで たばこを 吸[す]っては いけません。', r: 'нельзя' },
+        { p: 'Vて います (состояние)', e: '結婚[けっこん]して います。', r: 'состояние / результат' },
+        { p: '住[す]んで います ／ 知[し]って います', e: '大阪[おおさか]に 住[す]んで います。', r: 'живу / знаю' }
+      ],
+      ex: [
+        { k: 'picqa', t: 'Можно? Посмотри на знаки', jt: 'いいですか', h: 'Ответь по знаку: ええ、どうぞ。 или いいえ、～ては いけません。',
+          items: [
+            { img: 'no_smoke', q: 'ここで たばこを 吸[す]っても いいですか。', a: 'いいえ、吸[す]っては いけません。' },
+            { img: 'no_photo', q: 'ここで 写真[しゃしん]を 撮[と]っても いいですか。', pre: 'いいえ、' },
+            { img: 'no_phone', q: 'ここで 電話[でんわ]を かけても いいですか。', pre: 'いいえ、' },
+            { img: 'no_food', q: 'ここで アイスクリームを 食[た]べても いいですか。', pre: 'いいえ、' }
+          ] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'ても・ては・ている', h: 'Ловушка: «не знаю» — 知りません.',
+          items: [
+            { l: 'ここで 写真[しゃしん]を 撮[と]っても', o: ['いいですか', 'いけません'], pick: 0, r: '。…ええ、どうぞ。' },
+            { l: '美術館[びじゅつかん]で 写真[しゃしん]を 撮[と]っては', o: ['いけません', 'いいです'], r: '。' },
+            { l: '私[わたし]は 大阪[おおさか]に', o: ['住[す]んで います', '住[す]みます'], r: '。' },
+            { l: '木村[きむら]さんの 住所[じゅうしょ]を', o: ['知[し]って いますか', '知[し]りますか'], r: '。' },
+            { l: '…いいえ、', o: ['知[し]りません', '知[し]って いません'], r: '。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

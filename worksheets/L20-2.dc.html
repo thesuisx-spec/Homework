@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第20課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 20, p: 2, start: 3,
+      t: '夏休[なつやす]みは どう するの？',
+      ex: [
+        { k: 'lines', t: 'Спроси друга по-простому', jt: 'ふつうたい', h: 'Перепиши вопрос в простом стиле, как в примере.', arrow: true,
+          ex: { q: 'あした 京都[きょうと]へ 行[い]きますか。', a: 'あした 京都[きょうと]へ 行[い]く？' },
+          items: [
+            { q: 'いっしょに 昼[ひる]ごはんを 食[た]べませんか。' },
+            { q: '昨日[きのう] 何[なに]を しましたか。' },
+            { q: '日曜日[にちようび]は 暇[ひま]ですか。' }
+          ] },
+        { k: 'picqa', t: 'Ответь другу', jt: 'こたえて', h: 'Ответь в простом стиле: うん、… / ううん、…',
+          items: [
+            { img: 'summer', q: '夏休[なつやす]みは どう するの？' },
+            { img: 'ramen', q: 'ラーメン、好[す]き？' },
+            { img: 'movie', q: '映画[えいが]、見[み]に 行[い]かない？' },
+            { img: 'passport', q: 'ビザ、要[い]る？' }
+          ] },
+        { k: 'order', t: 'Составь вопрос', jt: 'ならべかえ', h: 'Расставь карточки по порядку и запиши вопрос.',
+          items: [
+            { w: ['の？', '夏休[なつやす]みは', 'する', 'どう'] }
+          ] }
+      ],
+      can: ['переводить вежливую речь в простую', 'разговаривать с другом в простом стиле']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

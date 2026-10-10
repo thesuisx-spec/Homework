@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第25課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 25, p: 2, start: 3,
+      t: 'いろいろ お世話[せわ]に なりました',
+      ex: [
+        { k: 'table', t: 'Образуй формы たら и ても', jt: 'たら・ても', h: 'Первая строка — образец.',
+          head: ['ます／です', 'たら', 'ても'],
+          rows: [
+            ['行[い]きます', '((いったら))', '((いっても))'],
+            ['降[ふ]ります', '', ''],
+            ['安[やす]いです', '', ''],
+            ['暇[ひま]です', '', ''],
+            ['雨[あめ]です', '', '']
+          ] },
+        { k: 'lines', t: 'Помечтай! もし ～たら', jt: 'もし', h: 'Ответь о себе полным предложением.',
+          items: [
+            { q: 'もし 1億円[おくえん] あったら、何[なに]を したいですか。' },
+            { q: 'もし 日本[にほん]へ 行[い]ったら、どこへ 行[い]きたいですか。' }
+          ] },
+        { k: 'write', t: 'Письмо учителю', jt: 'せんせいへ', h: 'Последний урок! Напиши короткое письмо-благодарность.',
+          lines: ['________ 先生[せんせい]', 'いろいろ お世話[せわ]に なりました。', '________ が いちばん 楽[たの]しかったです。', 'どうぞ お元気[げんき]で。'] }
+      ],
+      can: ['сказать «если…» и «когда…»: ～たら', 'сказать «даже если…»: ～ても']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

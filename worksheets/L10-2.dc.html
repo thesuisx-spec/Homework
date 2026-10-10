@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第10課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 10, p: 2, start: 3,
+      t: 'ナンプラー、ありますか',
+      ex: [
+        { k: 'choose', t: 'あります или います? Обведи', jt: 'ある・いる', h: 'Живое (люди, животные) — います, неживое — あります.',
+          items: [
+            { l: '公園[こうえん]に 子[こ]どもが', o: ['あります', 'います'], pick: 1, r: '。' },
+            { l: '部屋[へや]に 机[つくえ]が', o: ['あります', 'います'], r: '。' },
+            { l: '庭[にわ]に 犬[いぬ]が', o: ['あります', 'います'], r: '。' },
+            { l: 'ミラーさんは 事務所[じむしょ]', o: ['に', 'で'], r: 'います。' },
+            { l: '箱[はこ]の 中[なか]に 何[なに]', o: ['が', 'は'], r: 'ありますか。' }
+          ] },
+        { k: 'read', t: 'Прочитай и отметь ○ или ×', jt: 'よみましょう', h: 'Правда — ○, неправда — ×.', img: 'park',
+          text: ['私[わたし]の うちの 近[ちか]くに コンビニが あります。', 'コンビニの 隣[となり]に 公園[こうえん]が あります。', '公園[こうえん]に 木[き]や 花[はな]が あります。', '木[き]の 下[した]に 猫[ねこ]が います。'],
+          items: [{ q: 'コンビニの 隣[となり]に 銀行[ぎんこう]が あります。' }, { q: '公園[こうえん]に 木[き]が あります。' }, { q: '木[き]の 上[うえ]に 猫[ねこ]が います。' }] },
+        { k: 'lines', t: 'А у тебя?', jt: 'あなたは？', h: 'Ответь полным предложением.',
+          items: [
+            { q: 'あなたの 部屋[へや]に 何[なに]が ありますか。' },
+            { q: 'あなたの うちに 犬[いぬ]や 猫[ねこ]が いますか。' }
+          ] }
+      ],
+      can: ['различать あります и います', 'описать, где что находится: 上・下・右・左…']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

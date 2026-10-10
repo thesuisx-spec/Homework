@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第1課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 1, p: 2, start: 3,
+      t: '初[はじ]めまして',
+      ex: [
+        { k: 'lines', t: 'Скажи «нет»', jt: 'ひてい', h: 'Перепиши предложение в отрицательной форме, как в примере.', arrow: true,
+          ex: { q: '私[わたし]は 先生[せんせい]です。', a: '私[わたし]は 先生[せんせい]じゃ ありません。' },
+          items: [{ q: 'ミラーさんは 学生[がくせい]です。' }, { q: 'サントスさんは 医者[いしゃ]です。' }] },
+        { k: 'lines', t: 'Визитки: ответь на вопросы', jt: 'めいし', h: 'Посмотри на визитки и ответь полным предложением.',
+          cards: [
+            { img: 'office', top: 'IMC', name: 'マイク・ミラー', sub: 'アメリカ · 会社員[かいしゃいん]' },
+            { img: 'p_suit', top: 'ブラジルエアー', name: 'ジョゼ・サントス', sub: 'ブラジル · 社員[しゃいん]' },
+            { img: 'teacher', top: 'さくら大学[だいがく]', name: 'ジョン・ワット', sub: 'イギリス · 先生[せんせい]' }
+          ],
+          items: [
+            { q: 'ミラーさんは アメリカ人[じん]ですか。', pre: 'はい、' },
+            { q: 'サントスさんは 先生[せんせい]ですか。', pre: 'いいえ、' },
+            { q: 'さくら大学[だいがく]の 先生[せんせい]は だれですか。' }
+          ] },
+        { k: 'write', t: 'Представься!', jt: 'じこしょうかい', h: 'Заполни пропуски о себе, нарисуй портрет и прочитай вслух на уроке.', pic: 'это я',
+          lines: ['初[はじ]めまして。', '私[わたし]は ________ です。', '________ から 来[き]ました。', 'どうぞ よろしく。'] }
+      ],
+      can: ['представиться: имя, страна, профессия', 'сказать «нет» с じゃ ありません и спросить с か']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

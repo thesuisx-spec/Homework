@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第9課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 9, p: 1,
+      t: '残念[ざんねん]ですが',
+      ru: 'Что я люблю, что умею и почему',
+      hero: 'karaoke',
+      memo: [
+        { p: 'Nが 好[す]きです／嫌[きら]いです', e: '私[わたし]は 音楽[おんがく]が 好[す]きです。', r: 'нравится / не нравится' },
+        { p: 'Nが 上手[じょうず]です／下手[へた]です', e: 'マリアさんは ダンスが 上手[じょうず]です。', r: 'хорошо / плохо умеет' },
+        { p: 'Nが わかります／あります', e: '日本語[にほんご]が 少[すこ]し わかります。', r: 'понимаю / есть' },
+        { p: '～から、～', e: '時間[じかん]が ありませんから、行[い]きません。', r: 'потому что …, поэтому …' },
+        { p: 'どうして', e: 'どうして 行[い]きませんか。', r: 'почему?' }
+      ],
+      ex: [
+        { k: 'label', t: 'Увлечения: подпиши', jt: 'しゅみ', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['野球[やきゅう]', 'カラオケ', '歌舞伎[かぶき]', '音楽[おんがく]', 'ダンス', '旅行[りょこう]', '漢字[かんじ]', '絵[え]'],
+          items: [{ img: 'karaoke', a: 'カラオケ' }, { img: 'painting' }, { img: 'baseball' }, { img: 'travel' }, { img: 'kabuki' }, { img: 'kanji' }, { img: 'dance' }, { img: 'music' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'が・から', h: 'С 好き, 上手, わかる, ある используется が.',
+          items: [
+            { l: '私[わたし]は 料理[りょうり]', o: ['が', 'を'], pick: 0, r: '好[す]きです。' },
+            { l: 'ミラーさんは 漢字[かんじ]', o: ['が', 'で'], r: 'わかります。' },
+            { l: '時間[じかん]が ありません', o: ['から', 'まで'], r: '、行[い]きません。' },
+            { l: 'カタカナが', o: ['全然[ぜんぜん]', 'よく'], r: 'わかりません。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

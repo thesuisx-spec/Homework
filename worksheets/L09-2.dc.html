@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第9課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 9, p: 2, start: 3,
+      t: '残念[ざんねん]ですが',
+      ex: [
+        { k: 'picqa', t: 'А тебе нравится?', jt: 'すきですか', h: 'Ответь о себе: はい、… / いいえ、…',
+          items: [
+            { img: 'baseball', q: '野球[やきゅう]が 好[す]きですか。', a: 'はい、好[す]きです。' },
+            { img: 'karaoke', q: 'カラオケが 好[す]きですか。' },
+            { img: 'kabuki', q: '歌舞伎[かぶき]が わかりますか。' },
+            { img: 'dance', q: 'ダンスが 上手[じょうず]ですか。' }
+          ] },
+        { k: 'fill', t: 'Вставь наречие из рамки', jt: 'どのくらい', h: 'Подсказка — проценты в скобках.',
+          bank: ['よく', 'だいたい', '少[すこ]し', '全然[ぜんぜん]'],
+          items: [
+            { a: 1, t: '英語[えいご]が ((よく)) わかります。（100%）' },
+            { t: '日本語[にほんご]が ______ わかります。（80%）' },
+            { t: '漢字[かんじ]が ______ わかります。（30%）' },
+            { t: 'タイ語[ご]が ______ わかりません。（0%）' }
+          ] },
+        { k: 'lines', t: 'Почему? Ответь с から', jt: 'どうして', h: 'Придумай причину и ответь, как в примере.', arrow: true,
+          ex: { q: 'どうして パーティーへ 行[い]きませんか。', a: '用事[ようじ]が ありますから。' },
+          items: [
+            { q: 'どうして 早[はや]く 帰[かえ]りますか。' },
+            { q: 'どうして 日本語[にほんご]を 勉強[べんきょう]しますか。' }
+          ] }
+      ],
+      can: ['сказать, что люблю и что умею (が)', 'объяснить причину: ～から']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

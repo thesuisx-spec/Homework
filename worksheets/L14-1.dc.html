@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第14課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 14, p: 1,
+      t: 'みどり町[ちょう]まで お願[ねが]いします',
+      ru: 'て-форма: просим, предлагаем помощь, говорим «сейчас делаю»',
+      hero: 'taxi',
+      memo: [
+        { p: 'Vて ください', e: 'ここに 名前[なまえ]を 書[か]いて ください。', r: 'пожалуйста, сделайте' },
+        { p: 'Vて います', e: 'ミラーさんは 今[いま] 電話[でんわ]を かけて います。', r: 'сейчас делает (процесс)' },
+        { p: 'Vましょうか', e: '窓[まど]を 開[あ]けましょうか。', r: 'давайте я …? (помощь)' },
+        { p: 'て-форма', e: '書[か]く→書[か]いて・待[ま]つ→待[ま]って', r: 'き→いて, ち/り/い→って…' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['電気[でんき]', 'エアコン', '窓[まど]', 'ドア', '地図[ちず]', '塩[しお]', '砂糖[さとう]', 'パスポート'],
+          items: [{ img: 'map', a: '地図[ちず]' }, { img: 'aircon' }, { img: 'salt' }, { img: 'door' }, { img: 'passport' }, { img: 'light' }, { img: 'sugar' }, { img: 'window' }] },
+        { k: 'table', t: 'Образуй て-форму', jt: 'てけい', h: 'Первая строка — образец.',
+          head: ['ます', 'て'],
+          rows: [
+            ['書[か]きます', '((かいて))'],
+            ['待[ま]ちます', ''],
+            ['読[よ]みます', ''],
+            ['話[はな]します', ''],
+            ['急[いそ]ぎます', '']
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

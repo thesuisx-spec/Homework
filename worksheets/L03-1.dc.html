@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第3課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 3, p: 1,
+      t: 'これを ください',
+      ru: 'Здесь, там, где? Ориентируемся в здании и спрашиваем цену',
+      hero: 'vending',
+      memo: [
+        { p: 'ここ／そこ／あそこは Nです', e: 'ここは 食堂[しょくどう]です。', r: 'здесь / там / вон там' },
+        { p: 'Nは (место)です', e: 'トイレは あそこです。', r: 'N находится …' },
+        { p: 'どこ／どちら', e: 'エレベーターは どこですか。', r: 'где? (どちら — вежливо)' },
+        { p: 'Nは いくらですか', e: 'この ワインは いくらですか。', r: 'сколько стоит?' }
+      ],
+      ex: [
+        { k: 'label', t: 'Что это? Подпиши', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['自動販売機[じどうはんばいき]', 'トイレ', '階段[かいだん]', 'エレベーター', '電話[でんわ]', '靴[くつ]', 'ネクタイ', 'ワイン'],
+          items: [{ img: 'vending', a: '自動販売機[じどうはんばいき]' }, { img: 'tie' }, { img: 'stairs' }, { img: 'wine' }, { img: 'denwa' }, { img: 'toilet' }, { img: 'shoes' }, { img: 'elevator' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'しつもん', h: 'Подумай: место, страна или цена?',
+          items: [
+            { l: 'トイレは', o: ['どこ', 'だれ'], pick: 0, r: 'ですか。' },
+            { l: 'この 時計[とけい]は', o: ['いくら', 'どこ'], r: 'ですか。' },
+            { l: 'お国[くに]は', o: ['どちら', 'いくら'], r: 'ですか。' },
+            { l: 'これは', o: ['イタリア', 'イタリアの'], r: 'ワインです。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

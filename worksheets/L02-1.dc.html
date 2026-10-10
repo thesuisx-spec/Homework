@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第2課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 2, p: 1,
+      t: 'ほんの 気持[きも]ちです',
+      ru: 'Это, то, вон то: называем предметы и спрашиваем, чьи они',
+      hero: 'book',
+      memo: [
+        { p: 'これ／それ／あれは Nです', e: 'これは 辞書[じしょ]です。', r: 'это / то (у тебя) / вон то' },
+        { p: 'この／その／あの N', e: 'この 本[ほん]は 私[わたし]のです。', r: 'этот / тот + N' },
+        { p: 'N₁の N₂', e: 'これは 私[わたし]の 傘[かさ]です。', r: 'чей? / о чём?' },
+        { p: '～か、～か', e: 'これは「1」ですか、「7」ですか。', r: 'выбор: … или …?' }
+      ],
+      ex: [
+        { k: 'label', t: 'Что это? Подпиши', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['本[ほん]', '辞書[じしょ]', '新聞[しんぶん]', 'かぎ', '時計[とけい]', '傘[かさ]', 'かばん', '車[くるま]'],
+          items: [{ img: 'umbrella', a: '傘[かさ]' }, { img: 'key' }, { img: 'newspaper' }, { img: 'car' }, { img: 'book' }, { img: 'bag' }, { img: 'clock' }, { img: 'dict' }] },
+        { k: 'choose', t: 'これ или この? Обведи', jt: 'こそあど', h: 'これ・それ・あれ — одни; この・その・あの — только перед словом.',
+          items: [
+            { l: '', o: ['これ', 'この'], pick: 0, r: 'は 本[ほん]です。' },
+            { l: '', o: ['それ', 'その'], r: 'かばんは だれのですか。' },
+            { l: '', o: ['あれ', 'あの'], r: 'は 車[くるま]です。' },
+            { l: 'これは', o: ['わたし', 'わたしの'], r: '時計[とけい]です。' },
+            { l: 'それは', o: ['何[なん]の', 'だれの'], r: '雑誌[ざっし]ですか。…車[くるま]の 雑誌[ざっし]です。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

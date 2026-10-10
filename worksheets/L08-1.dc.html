@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第8課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 8, p: 1,
+      t: 'そろそろ 失礼[しつれい]します',
+      ru: 'Какой? Описываем места, вещи и людей прилагательными',
+      hero: 'fuji',
+      memo: [
+        { p: 'Nは な-прил.です', e: '京都[きょうと]は 静[しず]かです。', r: 'な-прилагательное' },
+        { p: 'Nは い-прил.です', e: '富士山[ふじさん]は 高[たか]いです。', r: 'い-прилагательное' },
+        { p: 'な-прил.な N ／ い-прил. N', e: 'きれいな 花[はな]・高[たか]い 山[やま]', r: 'прилагательное + сущ.' },
+        { p: '～じゃ ありません ／ ～くないです', e: '静[しず]かじゃ ありません・高[たか]くないです', r: 'отрицание' },
+        { p: 'とても ／ あまり', e: 'あまり 寒[さむ]くないです。', r: 'очень / не очень (+ отриц.)' }
+      ],
+      ex: [
+        { k: 'label', t: 'Какой? Подпиши картинки', jt: 'けいようし', h: 'Выбери прилагательное из рамки.',
+          bank: ['暑[あつ]い', '寒[さむ]い', '冷[つめ]たい', 'おいしい', '高[たか]い', 'にぎやか', 'きれい', '古[ふる]い'],
+          items: [{ img: 'hot', a: '暑[あつ]い' }, { img: 'ramen' }, { img: 'temple' }, { img: 'cold' }, { img: 'city' }, { img: 'fuji' }, { img: 'sakura' }, { img: 'icedrink' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'い・な', h: 'Помни: い-прилагательные не берут な.',
+          items: [
+            { l: '京都[きょうと]は', o: ['静[しず]かです', '静[しず]かなです'], pick: 0, r: '。' },
+            { l: 'これは', o: ['おもしろい', 'おもしろいな'], r: '本[ほん]です。' },
+            { l: '奈良[なら]は', o: ['きれいな', 'きれい'], r: '町[まち]です。' },
+            { l: 'この 映画[えいが]は あまり', o: ['おもしろくないです', 'おもしろいです'], r: '。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

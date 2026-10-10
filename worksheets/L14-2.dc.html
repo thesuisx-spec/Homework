@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第14課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 14, p: 2, start: 3,
+      t: 'みどり町[ちょう]まで お願[ねが]いします',
+      ex: [
+        { k: 'picqa', t: 'Попроси вежливо', jt: '～て ください', h: 'Закончи просьбу: …て ください。',
+          items: [
+            { img: 'aircon', q: '暑[あつ]いです。エアコンを', a: 'つけて ください。' },
+            { img: 'window', q: '暑[あつ]いです。窓[まど]を', post: 'ください。' },
+            { img: 'salt', q: 'すみません、塩[しお]を', post: 'ください。' },
+            { img: 'map', q: 'すみません、地図[ちず]を', post: 'ください。' }
+          ] },
+        { k: 'picqa', t: 'Что происходит сейчас?', jt: '～て います', h: 'Ответь: …て います。',
+          items: [
+            { img: 'rain', q: '今[いま] 雨[あめ]が', a: '降[ふ]って います。' },
+            { img: 'study', q: 'マリアさんは 今[いま] 何[なに]を して いますか。' },
+            { img: 'sleep', q: 'カリナさんは 今[いま] 何[なに]を して いますか。' },
+            { img: 'swim', q: 'テレサちゃんは 今[いま] 何[なに]を して いますか。' }
+          ] },
+        { k: 'lines', t: 'Предложи помощь', jt: '～ましょうか', h: 'Ответь, как в примере: …ましょうか。', arrow: true,
+          ex: { q: '傘[かさ]が ありません。', a: '傘[かさ]を 貸[か]しましょうか。' },
+          items: [
+            { q: '荷物[にもつ]が たくさん あります。' }
+          ] }
+      ],
+      can: ['вежливо просить: ～て ください', 'сказать, что происходит сейчас: ～て います']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

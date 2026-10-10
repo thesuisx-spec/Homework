@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第16課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 16, p: 1,
+      t: '使[つか]い方[かた]を 教[おし]えて ください',
+      ru: 'Последовательность действий и описание людей',
+      hero: 'shrine',
+      memo: [
+        { p: 'Vて、Vて、Vます', e: '神戸[こうべ]へ 行[い]って、映画[えいが]を 見[み]ました。', r: 'последовательность действий' },
+        { p: 'い-прил.くて ／ な-прил.で', e: 'この 部屋[へや]は 広[ひろ]くて、明[あか]るいです。', r: 'соединение прилагательных' },
+        { p: 'Vてから', e: '仕事[しごと]が 終[お]わってから、泳[およ]ぎに 行[い]きます。', r: 'после того как' },
+        { p: 'N₁は N₂が прил.', e: 'マリアさんは 髪[かみ]が 長[なが]いです。', r: 'у N₁ … (описание)' },
+        { p: 'どうやって', e: '大学[だいがく]まで どうやって 行[い]きますか。', r: 'каким образом?' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['お寺[てら]', '神社[じんじゃ]', 'ATM', 'シャワー', '顔[かお]', '体[からだ]', '地下鉄[ちかてつ]', '緑[みどり]'],
+          items: [{ img: 'temple', a: 'お寺[てら]' }, { img: 'face' }, { img: 'shrine' }, { img: 'tree' }, { img: 'atm' }, { img: 'body' }, { img: 'shower' }, { img: 'train' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'て・くて・で', h: 'い-прил. → くて, な-прил. и сущ. → で.',
+          items: [
+            { l: 'この 部屋[へや]は', o: ['広[ひろ]くて', '広[ひろ]いで'], pick: 0, r: '明[あか]るいです。' },
+            { l: '奈良[なら]は 静[しず]か', o: ['で', 'くて'], r: '、きれいな 町[まち]です。' },
+            { l: 'ミラーさんは', o: ['若[わか]くて', '若[わか]いくて'], r: '元気[げんき]です。' },
+            { l: '仕事[しごと]が', o: ['終[お]わってから', '終[お]わりてから'], r: '、飲[の]みに 行[い]きます。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

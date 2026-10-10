@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第21課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 21, p: 2, start: 3,
+      t: '私[わたし]も そう 思[おも]います',
+      ex: [
+        { k: 'lines', t: 'Как ты думаешь?', jt: 'どう おもいますか', h: 'Ответь своим мнением: …と 思います。', arrow: true,
+          ex: { q: '日本[にほん]の 漫画[まんが]を どう 思[おも]いますか。', a: 'おもしろいと 思[おも]います。' },
+          items: [
+            { q: '日本[にほん]の 物価[ぶっか]に ついて どう 思[おも]いますか。' },
+            { q: 'あしたは 雨[あめ]が 降[ふ]ると 思[おも]いますか。' }
+          ] },
+        { k: 'picqa', t: 'Что говорят японцы?', jt: 'なんと いいますか', h: 'Ответь: 「…」と 言います。',
+          items: [
+            { img: 'gohan', q: 'ご飯[はん]を 食[た]べる まえに 何[なん]と 言[い]いますか。', a: '「いただきます」と 言[い]います。' },
+            { img: 'sleep', q: '寝[ね]る まえに 何[なん]と 言[い]いますか。' },
+            { img: 'wakeup', q: '朝[あさ] 友達[ともだち]に 会[あ]いました。何[なん]と 言[い]いますか。' },
+            { img: 'present', q: 'プレゼントを もらいました。何[なん]と 言[い]いますか。' }
+          ] },
+        { k: 'order', t: 'Составь предложение', jt: 'ならべかえ', h: 'Расставь карточки по порядку и запиши предложение.',
+          items: [
+            { w: ['でしょう？', 'パーティーに', 'あした', '行[い]く'] }
+          ] }
+      ],
+      can: ['высказать мнение: ～と 思います', 'передать чужие слова: ～と 言って いました']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

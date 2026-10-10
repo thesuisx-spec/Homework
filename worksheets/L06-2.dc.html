@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第6課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 6, p: 2, start: 3,
+      t: 'いっしょに 行[い]きませんか',
+      ex: [
+        { k: 'picqa', t: 'Что ты делаешь?', jt: 'なにを しますか', h: 'Посмотри на картинку и ответь: …を …ます。',
+          items: [
+            { img: 'tennis', q: '日曜日[にちようび] 何[なに]を しますか。', a: 'テニスを します。' },
+            { img: 'letter', q: '今晩[こんばん] 何[なに]を しますか。' },
+            { img: 'movie', q: '土曜日[どようび] 何[なに]を しますか。' },
+            { img: 'photo', q: '京都[きょうと]で 何[なに]を しますか。' }
+          ] },
+        { k: 'lines', t: 'Прими приглашение', jt: 'さそい', h: 'Ответь, как в примере: ええ、～ましょう。', arrow: true,
+          ex: { q: 'いっしょに お茶[ちゃ]を 飲[の]みませんか。', a: 'ええ、飲[の]みましょう。' },
+          items: [
+            { q: 'いっしょに 昼[ひる]ごはんを 食[た]べませんか。', pre: 'ええ、' },
+            { q: 'あした いっしょに テニスを しませんか。', pre: 'ええ、' }
+          ] },
+        { k: 'write', t: 'Мой выходной', jt: 'わたしの にちようび', h: 'Заполни пропуски о себе.',
+          lines: ['日曜日[にちようび]、私[わたし]は ______ で ______ を ______ 。', '______ と ______ を 見[み]ました。', 'それから ______ を 食[た]べました。'] }
+      ],
+      can: ['сказать, что я ем, пью и делаю (を・で)', 'пригласить: ～ませんか и согласиться: ～ましょう']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

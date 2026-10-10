@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第22課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 22, p: 2, start: 3,
+      t: 'どんな アパートが いいですか',
+      ex: [
+        { k: 'choose', t: 'Какой глагол? Обведи', jt: 'きます・かぶります', h: 'Одежда — 着ます, шапка — かぶります, обувь — はきます, очки — かけます.',
+          items: [
+            { l: 'コートを', o: ['着[き]ます', 'かぶります'], pick: 0, r: '。' },
+            { l: '帽子[ぼうし]を', o: ['かぶります', 'はきます'], r: '。' },
+            { l: '靴[くつ]を', o: ['はきます', '着[き]ます'], r: '。' },
+            { l: '眼鏡[めがね]を', o: ['かけます', 'かぶります'], r: '。' },
+            { l: 'これは 私[わたし]が', o: ['作[つく]った', '作[つく]りました'], r: 'ケーキです。' }
+          ] },
+        { k: 'lines', t: 'Соедини в одно предложение', jt: 'めいししゅうしょく', h: 'Сделай второе предложение определением, как в примере.', arrow: true,
+          ex: { q: 'これは 写真[しゃしん]です。／父[ちち]が 撮[と]りました。', a: 'これは 父[ちち]が 撮[と]った 写真[しゃしん]です。' },
+          items: [
+            { q: 'これは ケーキです。／母[はは]が 作[つく]りました。' },
+            { q: 'あの 人[ひと]は だれですか。／帽子[ぼうし]を かぶって います。' }
+          ] },
+        { k: 'write', t: 'Где ты хочешь жить?', jt: 'わたしの ゆめ', h: 'Заполни пропуски о себе.',
+          lines: ['私[わたし]は ________ アパートが いいです。', '________ 町[まち]に 住[す]みたいです。', '________ 人[ひと]と 友達[ともだち]に なりたいです。'] }
+      ],
+      can: ['описать человека: ～て いる 人', 'строить определительные предложения']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

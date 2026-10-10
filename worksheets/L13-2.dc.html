@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第13課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 13, p: 2, start: 3,
+      t: '別々[べつべつ]に お願[ねが]いします',
+      ex: [
+        { k: 'table', t: 'Хочу! Образуй форму ～たい', jt: 'たいけい', h: 'Убери ます и добавь たいです.',
+          head: ['ます', 'たいです'],
+          rows: [
+            ['食[た]べます', '((たべたいです))'],
+            ['行[い]きます', ''],
+            ['買[か]います', ''],
+            ['見[み]ます', ''],
+            ['休[やす]みます', '']
+          ] },
+        { k: 'picqa', t: 'Зачем ты идёшь?', jt: 'なにを しに', h: 'Ответь: …に 行きます。',
+          items: [
+            { img: 'pool', q: 'プールへ 何[なに]を しに 行[い]きますか。', a: '泳[およ]ぎに 行[い]きます。' },
+            { img: 'river', q: '川[かわ]へ 何[なに]を しに 行[い]きますか。', post: 'に 行[い]きます。' },
+            { img: 'depart', q: 'デパートへ 何[なに]を しに 行[い]きますか。', post: 'に 行[い]きます。' },
+            { img: 'restaurant', q: 'レストランへ 何[なに]を しに 行[い]きますか。', post: 'に 行[い]きます。' }
+          ] },
+        { k: 'write', t: 'Мои желания', jt: 'わたしの ゆめ', h: 'Заполни пропуски о себе.',
+          lines: ['今[いま] 私[わたし]は ________ が ほしいです。', '週末[しゅうまつ]に ________ へ 行[い]きたいです。', 'そこで ________ を したいです。'] }
+      ],
+      can: ['сказать, чего хочу: ほしい / ～たい', 'сказать, куда и зачем иду: ～に 行きます']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

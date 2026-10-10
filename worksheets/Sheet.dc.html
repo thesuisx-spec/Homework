@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Шаблон листа</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 794px; height: 1123px; box-sizing: border-box; padding: 34px 44px 26px; background: #FBF8F1; color: #1E1B18; font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif; display: flex; flex-direction: column; gap: 15px; overflow: hidden">
+
+  <!-- ШАПКА: первая страница -->
+  <sc-if value="{{isP1}}" hint-placeholder-val="{{true}}">
+    <header style="display: flex; align-items: center; gap: 18px; padding-bottom: 12px; border-bottom: 3px double #1E1B18">
+      <div style="width: 96px; height: 96px; flex: none; border-radius: 50%; background: #F2ECDF; display: flex; align-items: center; justify-content: center">
+        <sc-if value="{{hasHero}}" hint-placeholder-val="{{true}}"><img src="{{hero}}" alt="" style="width: 70px; height: 70px; object-fit: contain"></sc-if>
+      </div>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0">
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #2E4A7A">Minna no Nihongo I · Домашнее задание</div>
+        <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap">
+          <div style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 44px; line-height: 1.5; font-weight: 900; color: {{accent}}; letter-spacing: 1px; white-space: nowrap"><ruby>第<rt style="font-size: 0.32em; font-weight: 700; color: #6B655C">だい</rt></ruby>{{n}}<ruby>課<rt style="font-size: 0.32em; font-weight: 700; color: #6B655C">か</rt></ruby></div>
+          <div style="font-family: 'Klee One', serif; font-size: 23px; font-weight: 600; line-height: 2"><sc-for list="{{t}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+        </div>
+        <div style="font-size: 13px; color: #5A544C; margin-top: -4px">{{ru}}</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; width: 150px; flex: none; font-size: 13px; font-weight: 700; color: #5A544C">
+        <div style="display: flex; align-items: flex-end; gap: 8px"><span>Имя</span><span style="flex: 1; border-bottom: 1.5px solid #8A8378; height: 18px"></span></div>
+        <div style="display: flex; align-items: flex-end; gap: 8px"><span>Дата</span><span style="flex: 1; border-bottom: 1.5px solid #8A8378; height: 18px"></span></div>
+      </div>
+    </header>
+  </sc-if>
+
+  <!-- ШАПКА: вторая страница -->
+  <sc-if value="{{isP2}}" hint-placeholder-val="{{false}}">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 8px; border-bottom: 3px double #1E1B18; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #5A544C">
+      <span style="display: flex; align-items: baseline; gap: 12px"><span style="font-family: 'Zen Maru Gothic', sans-serif; color: {{accent}}; font-size: 17px; font-weight: 900; letter-spacing: 1px">第{{n}}課</span><span style="font-family: 'Klee One', serif; font-size: 15px; letter-spacing: 0; color: #1E1B18"><sc-for list="{{t}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><span>{{s.t}}</span></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></span>
+      <span>ДОМАШНЕЕ ЗАДАНИЕ · СТР. 2</span>
+    </div>
+  </sc-if>
+
+  <!-- ПАМЯТКА -->
+  <sc-if value="{{hasMemo}}" hint-placeholder-val="{{false}}">
+    <section style="background: #F2ECDF; border-radius: 16px; padding: 10px 20px 8px; display: flex; flex-direction: column; gap: 2px">
+      <div style="display: flex; align-items: baseline; gap: 10px">
+        <span style="font-size: 15px; font-weight: 900">Памятка</span>
+        <span style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 13px; font-weight: 700; color: {{accent}}">ぶんけい</span>
+        <span style="font-size: 12px; color: #5A544C">прочитай вслух перед заданиями</span>
+      </div>
+      <sc-for list="{{memo}}" as="mr" hint-placeholder-count="4">
+        <div style="display: grid; grid-template-columns: 210px minmax(0, 1fr) 160px; column-gap: 14px; align-items: center; border-bottom: 1px dashed #CFC6B4; min-height: 34px">
+          <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 14px; line-height: 2.1"><sc-for list="{{mr.p}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+          <div style="font-family: 'Klee One', serif; font-size: 17px; font-weight: 600; line-height: 2.1"><sc-for list="{{mr.e}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+          <div style="font-size: 12.5px; color: #5A544C; line-height: 1.3">{{mr.r}}</div>
+        </div>
+      </sc-for>
+    </section>
+  </sc-if>
+
+  <!-- ЗАДАНИЯ -->
+  <sc-for list="{{ex}}" as="e" hint-placeholder-count="3">
+    <section style="display: flex; flex-direction: column; gap: 9px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <div style="width: 32px; height: 32px; flex: none; border-radius: 50%; border: 2.5px solid {{accent}}; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 900; font-size: 17px; box-sizing: border-box">{{e.no}}</div>
+        <div style="display: flex; flex-direction: column; gap: 0">
+          <div style="display: flex; align-items: baseline; gap: 10px"><span style="font-size: 18px; font-weight: 900">{{e.t}}</span><span style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 13px; font-weight: 700; color: {{accent}}">{{e.jt}}</span></div>
+          <div style="font-size: 12.5px; color: #5A544C">{{e.h}}</div>
+        </div>
+      </div>
+
+      <!-- банк слов (общий) -->
+      <sc-if value="{{e.hasBank}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 0; padding: 2px 14px; border: 1.5px dashed #B9AF9C; border-radius: 12px; font-family: 'Klee One', serif; font-size: 17px; font-weight: 600; line-height: 2.1">
+          <sc-for list="{{e.bank}}" as="w" hint-placeholder-count="6"><span><sc-for list="{{w.s}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></sc-for>
+        </div>
+      </sc-if>
+
+      <!-- LABEL: подпиши картинки -->
+      <sc-if value="{{e.is.label}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: grid; grid-template-columns: repeat({{e.cols}}, minmax(0, 1fr)); gap: 12px">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="8">
+            <div style="position: relative; background: #FFFFFF; border: 1.5px solid #D9D0BE; border-radius: 14px; padding: 8px 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px">
+              <span style="position: absolute; left: 9px; top: 5px; font-size: 12px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+              <img src="{{it.img}}" alt="" style="width: 70px; height: 70px; object-fit: contain">
+              <div style="align-self: stretch; min-height: 34px; border-bottom: 1.5px solid #8A8378; display: flex; align-items: flex-end; justify-content: center; font-family: 'Klee One', serif; font-size: 16px; font-weight: 600; color: #2E4A7A; line-height: 2"><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- CHOOSE: обведи -->
+      <sc-if value="{{e.is.choose}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-direction: column">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="5">
+            <div style="display: flex; align-items: center; flex-wrap: wrap; column-gap: 8px; min-height: 42px; border-bottom: 1px solid #E4DCCB; font-family: 'Klee One', serif; font-size: 19px; font-weight: 600; line-height: 2.05">
+              <span style="width: 24px; flex: none; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+              <span><sc-for list="{{it.l}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span>
+              <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 17px; line-height: 1.9">
+                <sc-for list="{{it.o}}" as="o" hint-placeholder-count="2"><span style="padding: 0 9px; border-radius: 999px; border: 2px solid {{o.bc}}; color: {{o.c}}"><sc-for list="{{o.s}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span><sc-if value="{{o.sep}}" hint-placeholder-val="{{true}}"><span style="color: #B9AF9C">／</span></sc-if></sc-for>
+              </span>
+              <span><sc-for list="{{it.r}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- LINES: вопрос → ответ (с визитками / примером) -->
+      <sc-if value="{{e.is.lines}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-direction: column; gap: 6px; font-family: 'Klee One', serif; font-size: 19px; font-weight: 600; line-height: 2.05">
+          <sc-if value="{{e.hasCards}}" hint-placeholder-val="{{false}}">
+            <div style="display: grid; grid-template-columns: repeat({{e.ccols}}, minmax(0, 1fr)); gap: 12px; margin-bottom: 4px">
+              <sc-for list="{{e.cards}}" as="c" hint-placeholder-count="3">
+                <div style="display: flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1.5px solid #1E1B18; border-radius: 6px; padding: 8px 10px">
+                  <img src="{{c.img}}" alt="" style="width: 48px; height: 48px; object-fit: contain; flex: none">
+                  <div style="display: flex; flex-direction: column; min-width: 0; line-height: 1.75">
+                    <div style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 11px; font-weight: 700; color: #5A544C"><sc-for list="{{c.top}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-size: 0.6em; font-weight: 500">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+                    <div style="font-size: 17px"><sc-for list="{{c.name}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+                    <div style="font-size: 14px; color: #3A352F"><sc-for list="{{c.sub}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{e.hasEx}}" hint-placeholder-val="{{false}}">
+            <div style="display: flex; flex-direction: column; padding: 4px 14px; background: #EEF1F6; border-radius: 12px">
+              <div style="display: flex; gap: 10px; align-items: baseline"><span style="width: 22px; flex: none; font-family: 'Zen Maru Gothic', sans-serif; font-size: 14px; font-weight: 700; color: #2E4A7A">例</span><span><sc-for list="{{e.exq}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+              <div style="display: flex; gap: 10px; align-items: baseline; color: #2E4A7A"><span style="width: 22px; flex: none; font-size: 16px">→</span><span><sc-for list="{{e.exa}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+            </div>
+          </sc-if>
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; padding: 0 14px">
+              <div style="display: flex; gap: 10px; align-items: baseline"><span style="width: 22px; flex: none; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span><span><sc-for list="{{it.q}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if><sc-if value="{{s.b}}" hint-placeholder-val="{{false}}"><span style="display: inline-block; width: {{s.w}}px; height: 1.1em; border-bottom: 1.5px solid #8A8378; margin: 0 4px; vertical-align: -0.2em"></span></sc-if></sc-for></span></div>
+              <div style="display: flex; gap: 8px; align-items: flex-end; min-height: 36px"><span style="width: 22px; flex: none; color: #8A8378; font-size: 16px">{{e.arrowCh}}</span><span style="color: #2E4A7A"><sc-for list="{{it.pre}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span><span style="flex: 1; min-height: 34px; border-bottom: 1.5px solid #8A8378; color: #2E4A7A"><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span><span><sc-for list="{{it.post}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- PICQA: картинка + вопрос -->
+      <sc-if value="{{e.is.picqa}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="4">
+            <div style="display: flex; gap: 12px; align-items: center; background: #FFFFFF; border: 1.5px solid #D9D0BE; border-radius: 14px; padding: 8px 12px">
+              <img src="{{it.img}}" alt="" style="width: 74px; height: 74px; object-fit: contain; flex: none">
+              <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; font-family: 'Klee One', serif; font-size: 17px; font-weight: 600; line-height: 2">
+                <div><span style="font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 800; color: {{it.mc}}; margin-right: 6px">{{it.m}}</span><sc-for list="{{it.q}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+                <div style="display: flex; align-items: flex-end; gap: 6px; min-height: 34px"><span style="color: #2E4A7A"><sc-for list="{{it.pre}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span><span style="flex: 1; min-height: 30px; border-bottom: 1.5px solid #8A8378; color: #2E4A7A"><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span><span><sc-for list="{{it.post}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- FILL: вставь слово -->
+      <sc-if value="{{e.is.fill}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-direction: column">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="5">
+            <div style="display: flex; align-items: center; gap: 8px; min-height: 44px; border-bottom: 1px solid #E4DCCB; font-family: 'Klee One', serif; font-size: 19px; font-weight: 600; line-height: 2.05">
+              <span style="width: 24px; flex: none; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+              <sc-if value="{{it.hasImg}}" hint-placeholder-val="{{false}}"><img src="{{it.img}}" alt="" style="width: 40px; height: 40px; object-fit: contain; flex: none"></sc-if>
+              <span><sc-for list="{{it.t}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if><sc-if value="{{s.b}}" hint-placeholder-val="{{false}}"><span style="display: inline-block; width: {{s.w}}px; height: 1.1em; border-bottom: 1.5px solid #8A8378; margin: 0 4px; vertical-align: -0.2em"></span></sc-if><sc-if value="{{s.f}}" hint-placeholder-val="{{false}}"><span style="color: #2E4A7A; border-bottom: 1.5px solid #8A8378; padding: 0 8px; margin: 0 4px">{{s.t}}</span></sc-if></sc-for></span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ORDER: составь предложение -->
+      <sc-if value="{{e.is.order}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-direction: column; gap: 8px">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+                <span style="width: 24px; flex: none; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+                <sc-for list="{{it.w}}" as="c" hint-placeholder-count="4"><span style="padding: 0 10px; border: 1.5px solid #1E1B18; border-radius: 8px; background: #FFFFFF; font-family: 'Klee One', serif; font-size: 17px; font-weight: 600; line-height: 2"><sc-for list="{{c.s}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></sc-for>
+              </div>
+              <div style="margin-left: 32px; min-height: 36px; border-bottom: 1.5px solid #8A8378; display: flex; align-items: flex-end; font-family: 'Klee One', serif; font-size: 18px; font-weight: 600; color: #2E4A7A; line-height: 2"><span><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- READ: прочитай и отметь ○ / × -->
+      <sc-if value="{{e.is.read}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; gap: 14px; padding: 8px 16px; background: #F2ECDF; border-radius: 14px; align-items: center">
+            <sc-if value="{{e.hasImg}}" hint-placeholder-val="{{false}}"><img src="{{e.rimg}}" alt="" style="width: 80px; height: 80px; object-fit: contain; flex: none"></sc-if>
+            <div style="flex: 1; min-width: 0; font-family: 'Klee One', serif; font-size: 18px; font-weight: 600; line-height: 2.05">
+              <sc-for list="{{e.text}}" as="ln" hint-placeholder-count="3"><div><sc-for list="{{ln.s}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div></sc-for>
+            </div>
+          </div>
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="3">
+            <div style="display: flex; align-items: center; gap: 10px; min-height: 40px; border-bottom: 1px solid #E4DCCB">
+              <span style="width: 24px; flex: none; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+              <span style="flex: 1; font-family: 'Klee One', serif; font-size: 17px; font-weight: 600; line-height: 2"><sc-for list="{{it.q}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span>
+              <span style="display: flex; gap: 8px; flex: none">
+                <span style="width: 30px; height: 30px; border: 1.5px solid #8A8378; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Zen Maru Gothic', sans-serif; font-size: 15px; color: #8A8378">○</span>
+                <span style="width: 30px; height: 30px; border: 1.5px solid #8A8378; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Zen Maru Gothic', sans-serif; font-size: 15px; color: #8A8378">×</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- CLOCK: который час -->
+      <sc-if value="{{e.is.clock}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: grid; grid-template-columns: repeat({{e.cols}}, minmax(0, 1fr)); gap: 12px">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="4">
+            <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; background: #FFFFFF; border: 1.5px solid #D9D0BE; border-radius: 14px; padding: 8px 10px 6px">
+              <span style="position: absolute; left: 9px; top: 5px; font-size: 12px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+              <svg viewBox="0 0 100 100" width="86" height="86" aria-hidden="true">
+                <circle cx="50" cy="50" r="45" fill="#FFFFFF" stroke="#1E1B18" stroke-width="3"></circle>
+                <text x="50" y="20" text-anchor="middle" font-size="12" font-family="Nunito, sans-serif" font-weight="800" fill="#1E1B18">12</text>
+                <text x="85" y="54" text-anchor="middle" font-size="12" font-family="Nunito, sans-serif" font-weight="800" fill="#1E1B18">3</text>
+                <text x="50" y="89" text-anchor="middle" font-size="12" font-family="Nunito, sans-serif" font-weight="800" fill="#1E1B18">6</text>
+                <text x="15" y="54" text-anchor="middle" font-size="12" font-family="Nunito, sans-serif" font-weight="800" fill="#1E1B18">9</text>
+                <line x1="50" y1="50" x2="50" y2="28" stroke="#1E1B18" stroke-width="5" stroke-linecap="round" transform="rotate({{it.ha}} 50 50)"></line>
+                <line x1="50" y1="50" x2="50" y2="15" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" transform="rotate({{it.ma}} 50 50)"></line>
+                <circle cx="50" cy="50" r="3.5" fill="#1E1B18"></circle>
+              </svg>
+              <div style="align-self: stretch; min-height: 34px; border-bottom: 1.5px solid #8A8378; display: flex; align-items: flex-end; justify-content: center; font-family: 'Klee One', serif; font-size: 16px; font-weight: 600; color: #2E4A7A; line-height: 2"><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- COUNT: посчитай -->
+      <sc-if value="{{e.is.count}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: grid; grid-template-columns: repeat({{e.cols}}, minmax(0, 1fr)); gap: 12px">
+          <sc-for list="{{e.items}}" as="it" hint-placeholder-count="4">
+            <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; background: #FFFFFF; border: 1.5px solid #D9D0BE; border-radius: 14px; padding: 8px 10px 6px">
+              <span style="position: absolute; left: 9px; top: 5px; font-size: 12px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+              <div style="height: 84px; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 2px">
+                <sc-for list="{{it.dots}}" as="dt" hint-placeholder-count="3"><img src="{{dt.u}}" alt="" style="width: {{dt.sz}}px; height: {{dt.sz}}px; object-fit: contain"></sc-for>
+              </div>
+              <div style="align-self: stretch; display: flex; align-items: flex-end; gap: 4px; min-height: 34px; font-family: 'Klee One', serif; font-size: 16px; font-weight: 600; line-height: 2"><span style="flex: 1; min-height: 30px; border-bottom: 1.5px solid #8A8378; color: #2E4A7A; text-align: center"><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span><span><sc-for list="{{it.post}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- POS: где находится? -->
+      <sc-if value="{{e.is.pos}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'Klee One', serif; font-size: 19px; font-weight: 600; line-height: 2.05; padding: 0 14px; background: #EEF1F6; border-radius: 12px"><sc-for list="{{e.sent}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if><sc-if value="{{s.b}}" hint-placeholder-val="{{false}}"><span style="display: inline-block; width: {{s.w}}px; height: 1.1em; border-bottom: 1.5px solid #8A8378; margin: 0 4px; vertical-align: -0.2em"></span></sc-if></sc-for></div>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+            <sc-for list="{{e.items}}" as="it" hint-placeholder-count="4">
+              <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; background: #FFFFFF; border: 1.5px solid #D9D0BE; border-radius: 14px; padding: 6px 4px 6px">
+                <span style="position: absolute; left: 9px; top: 5px; font-size: 12px; font-weight: 800; color: {{it.mc}}">{{it.m}}</span>
+                <div style="position: relative; width: 150px; height: 108px">
+                  <img src="{{e.base}}" alt="" style="position: absolute; left: 37px; top: 26px; width: 76px; height: 76px; z-index: 1">
+                  <img src="{{it.obj}}" alt="" style="position: absolute; left: {{it.x}}px; top: {{it.y}}px; width: 36px; height: 36px; z-index: 2">
+                </div>
+                <div style="align-self: stretch; margin: 0 8px; min-height: 32px; border-bottom: 1.5px solid #8A8378; display: flex; align-items: flex-end; justify-content: center; font-family: 'Klee One', serif; font-size: 16px; font-weight: 600; color: #2E4A7A; line-height: 2"><sc-for list="{{it.a}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- TABLE: таблица форм -->
+      <sc-if value="{{e.is.table}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: grid; grid-template-columns: repeat({{e.tcols}}, minmax(0, 1fr)); border-top: 1.5px solid #1E1B18; border-left: 1.5px solid #1E1B18; background: #FFFFFF">
+          <sc-for list="{{e.cells}}" as="c" hint-placeholder-count="8">
+            <div style="min-height: 40px; padding: 0 10px; display: flex; align-items: center; border-right: 1.5px solid #1E1B18; border-bottom: 1.5px solid #1E1B18; background: {{c.bg}}; font-family: {{c.ff}}; font-size: {{c.fs}}px; font-weight: {{c.fw}}; color: {{c.col}}; line-height: 2"><span><sc-for list="{{c.s}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if><sc-if value="{{s.f}}" hint-placeholder-val="{{false}}"><span style="color: #2E4A7A">{{s.t}}</span></sc-if></sc-for></span></div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- WRITE: напиши о себе -->
+      <sc-if value="{{e.is.write}}" hint-placeholder-val="{{false}}">
+        <div style="margin-left: 44px; display: flex; gap: 16px; align-items: stretch">
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; padding: 8px 18px; border: 1.5px dashed #B9AF9C; border-radius: 14px; font-family: 'Klee One', serif; font-size: 19px; font-weight: 600; line-height: 2.15">
+            <sc-for list="{{e.lines}}" as="ln" hint-placeholder-count="4"><div><sc-for list="{{ln.s}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if><sc-if value="{{s.b}}" hint-placeholder-val="{{false}}"><span style="display: inline-block; width: {{s.w}}px; height: 1.1em; border-bottom: 1.5px solid #8A8378; margin: 0 4px; vertical-align: -0.2em"></span></sc-if></sc-for></div></sc-for>
+          </div>
+          <sc-if value="{{e.hasPic}}" hint-placeholder-val="{{false}}">
+            <div style="width: 140px; flex: none; border: 1.5px solid #B9AF9C; border-radius: 14px; background: #FFFFFF; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; box-sizing: border-box; font-size: 12px; font-weight: 700; color: #8A8378">{{e.pic}}</div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </section>
+  </sc-for>
+
+  <!-- ПОДВАЛ: первая страница -->
+  <sc-if value="{{isP1}}" hint-placeholder-val="{{true}}">
+    <footer style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; color: #8A8378; letter-spacing: 1px">
+      <span>MINNA NO NIHONGO I · <span style="font-family: 'Zen Maru Gothic', sans-serif">第{{n}}課</span></span>
+      <span style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 14px; color: {{accent}}">がんばって！</span>
+      <span>стр. 1 / 2</span>
+    </footer>
+  </sc-if>
+
+  <!-- ПОДВАЛ: вторая страница — самопроверка и печать -->
+  <sc-if value="{{isP2}}" hint-placeholder-val="{{false}}">
+    <footer style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 10px; border-top: 1.5px solid #D9D0BE">
+      <div style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-weight: 700">
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #5A544C">Я УМЕЮ…</div>
+        <sc-for list="{{can}}" as="cn" hint-placeholder-count="3">
+          <div style="display: flex; align-items: center; gap: 8px"><span style="width: 16px; height: 16px; flex: none; border: 2px solid #1E1B18; border-radius: 4px; box-sizing: border-box"></span><span style="line-height: 1.9"><sc-for list="{{cn.s}}" as="s" hint-placeholder-count="2"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby style="font-family: 'Klee One', serif">{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></span></div>
+        </sc-for>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px">
+        <div style="font-size: 12px; font-weight: 700; color: #8A8378; text-align: right; line-height: 1.4">печать<br>учителя</div>
+        <div style="width: 88px; height: 88px; flex: none; border-radius: 50%; border: 2px dashed {{accent}}; color: {{accent}}; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; font-size: 13px; font-weight: 700; line-height: 1.3; box-sizing: border-box">よく<br>できました</div>
+      </div>
+    </footer>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"d":{"editor":null,"tsType":"object"},"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const IMG = {aircon:'ed501d75c1cf5c0dde3bb9e1c495b3cb',airport:'7b42f5aa25a31977fbe652f3649fec35',apple:'5b6526cf4e9e1378e90f65421b77efa2',atm:'abfb65a12cfb541450bc66413625c03a',autumn:'0f1622abfaa7165c3d31e403499db25c',bag:'b79ba1ee2d7ed3cc597a99f439fd2e11',bank:'99a17868e1eeb865aafd7bc3a8d0f84c',banker:'ae45602b532c113312e50b6cde3fb7d6',baseball:'a5ec662aeb1e5efe7fa1d36b84526ad1',battery:'ace0e00acbb7d1b6aca79f43dd995673',bed:'e1b4208933cfa3855cbc0ea535c481ab',beer:'6e47b9dceaecc14357b9309354f7b12c',bento:'171ab1f5610e30a9c6ec3a5cc2cff73e',bicycle:'ef5f75d222f8de27eb56a2209d33b6c8',body:'83ce1450aa02fa9500a0f32596deef3c',book:'6b6357b380f0bdd2577602b5b227bf1f',box:'f19a5d25e2c71e9f362a3f5145d3600e',boy:'f0225578ce1a1a63035afa6711a2f6b1',bread:'db859ce85bf3d3266573bf4a1d5ff4e8',bridge:'34673971dc9708a36f2a6e7c05da8ab1',bus:'a844cdae9252ef814803836bc0761275',button:'da303ec987e37403644560ba5f99b965',cafe:'e7f5158b457a6b087a443b22ba148b6a',cake:'b210d15a7319b2306e86623d8baf2031',camera:'f0570e97cb7b62a63f06f7dd0026461f',car:'32b15ae901e6ac639fc59739b3c24c94',card:'a0b2420620b9c13bbd930ecb9c1e62a7',cat:'96600e2d1d3643459778907e8cb1d8c7',chair:'c956ff2f5ac8bcaa526929f4ceb64a4a',choco:'9e009f716eab722914f4095275c45181',city:'f5ca6edd98d3b8b70bffe1e4331df0ca',cleaning:'2511551db8cfc9cfaf18830094582078',climb:'be2910690de00305b6a88d0103426e2a',clock:'c2ccaee881a2e75e00e9929515027163',cloudy:'a2d1ca4cb65d62985ffa9afbe978ca71',coat:'5576f8789d254d78fb5c3a3d0f38ed94',coffee:'177daaa9b983f7e9baf6a4305a5e51cd',cold:'4d7f5c81ca367199b9c3cfec92b14db7',computer:'7b35087fb242714ff830cace74ad7108',concert:'3b7986c82c9be2562762118afa36cd5b',corner:'17223aacb5c2d16ef4e5fb59a2ec4fce',countryside:'f526339a057b795baaa7b826e8111df2',crossing:'395dea556e1e5a2ff2b080350b5cd054',curry:'8c2edb9ac6b4078803e4862b404a66c0',dance:'3a1999e98a12fe56b5e9cee7ffee692b',denwa:'d9b66a9d85f2a55155e9f30e9ca57136',depart:'be99fed1eb2136432ff810e0ad6f88d3',desk:'f0d448f30dd2dbf0ee48c5f0dc33c2d3',diary:'36aa4a6d53fd1e7529508ec08dea54f9',dict:'f60e634f5466f65a21ae55d5271e840a',doctor:'83477ef6479ed447b0d737506165eb01',dog:'735f118c20bb96e0edebdf26a707019b',door:'44bc275e95c885d5f0ab26534a58d931',drive:'cb65f656ddbfcb0a62940e6d8dc81a42',earth:'55c9ed97149e3b5ed4fb3f93802ec87e',egg:'1d0dc61cd1dfe83268d11e219b0471d0',elephant:'1016aa089f95579a776ca5062ad74c79',elevator:'f4a5fc29d1944f0102cd4031f95353f3',envelope:'aa588eba505f62e12eece09af51b7df0',eraser:'ed659cf1bf12cb151951a9e90463cc36',face:'7feaa4c7cb807d50b2ebe61a4012f433',factory:'45d767032575b225223610197ca17eaa',family:'f0edd7bfa02f1be75ef8049f7d5967f2',festival:'2f2aeb94f37a5013deb8baf8b6d6c7b1',fish:'d236bf91b1859e2a1634f02f1096ac5b',fishing:'d4a8a7420b93aec3cabc67b24be8c263',flower:'88478baa5f8967bfca7bf6fef57df232',fridge:'801693b8c5277002657836da31eff4be',fruit:'f23fd983b435526a4188b903f6147153',fuji:'39e0d978fab46b1aef1ae2d9ee44148c',genkan:'24c00830736dc895f5b31a7087c5ab95',gift_give:'05b1a2171040bd5f0c99fcbd9231b8cb',girl:'23cfa1937eca0aa4f89b4fb8fcb20960',glasses:'b623d6357c2fcaa6915976a6c9d61b7a',gohan:'0e759b604c0b3937319b35f4074919e0',golf:'cb853f21a2962f1d33382476a71a4775',grandma:'9cbf093a0b61e88605db9e67ce72c54a',grandpa:'0d3f229405b4a86e9c73393abb3296c6',guitar:'3c9c925bb84133dd1965915bafdace20',hashi:'7218ef8c680db0fabdcb63d95813c7d0',hat:'fcd8207a5c043b88a99e82c69ef4f512',homestay:'b76080e25a446ad61db9029b4c2a021b',homework:'5435c05de4fd172d21647e03cbc4cbe0',horse:'6f11ef57917ba2298f04ae26b76186d3',hospital:'2f799a144da035baa09ea5657096d6b6',hot:'187ed452471d184058da82212a63462a',hotel:'2b472a214ac85e4150d4e356d6e9901e',icecream:'361d8d8b096b8fab2cf32fbfce08577f',icedrink:'7808cc7c93fcb2ce5e47ef923d9fe352',juice:'5fca9f1de4ce0d5b1d959c9988576948',kabuki:'0a749e96ab00e6fbd64926a7e3f6b91c',kadomatsu:'209cc683c281bba29ee8b2ea07d4cf02',kanji:'e46db350fcdda1930672d4f4b5fb3613',karaoke:'fc56b5e04e1864aa13f279f81f799e4d',kettle:'41e556c60abb63259771673d6ff532df',key:'4c53991c7bf9c845bc96caef70cfe8fe',konbini:'94d5aa30b79f5162e7ceb6a2cd685a3b',letter:'b2d9db6781b03cabca3ff3450430222e',library:'13bc57d2d797ba235c61937338ecf3c5',light:'b7cb6906fa3a373248aab6fe3035ae03',lottery:'369ee18a2db0e828d134ba69b45e6710',magazine:'c0c619904f0af8c5c9fc6ac62ae552fa',man:'8abeae6e716ff93abaf34ecd74de5280',manga:'a8acd413ede1d3065ea55f0cbeb566ea',map:'aef6f7df26018166b28c79bc9b8ff68b',matcha:'e8941073ab4969d6825059bf5cb8bdf8',meat:'c47ba3d7cc5c0d0b9bddba9dadb4f58d',medicine:'0b118cb857968532979b43b3b91f5809',mikan:'36653571a768f218650fd9e5b8e48999',milk:'47626c5be0dbc6ab7fa3b2ab77216f9f',money:'36e829fc1f14e7bacc0c6d28be030a4f',moon:'31d429fc7cf9fc25f0125fe883aaa5a9',mountain:'e173cb5097a51d8d94aa818c7d768607',movie:'cbd1fffb5fbec14c398a49fd048ab4ad',moving:'ea37aa1c4b0a52a595d31a56324b9165',museum:'726f2b2e0afd51309e2634eedd226fd1',music:'5022d80672513a69082564c9b4453177',nengajo:'84ef0864094adcb0801f692c13a148f4',news:'8f06d41bf1424f3b83fcc4ee3a901243',newspaper:'b5c63eb33d7030309bb49a3e57d63a75',no_food:'f543ff6e6f0d0c6b7c87a8c8b882e92b',no_phone:'e92f9d8a260ca066585f3887875c55fd',no_photo:'94ca9966634fee632b9dc516e8236216',no_smoke:'89cfee17fdece2165b7164fdd691812b',notebook:'0f3d7ce0eb07ed3fe876a967fd6b1e49',office:'e200ee3d6851f11f2e05f7e88bba8640',ofuro:'afae2294034ac1c17bcbfed5c55ad0d4',p_glasses:'0e9f2402bd7cb182c5a5b59903cda1e5',p_hat:'38b50030758d0c3c0ea9cd559e32f97b',p_kimono:'d9785a905f5692143c4532bf08e21a4f',p_suit:'ae44e66134c939ab9df034544b63abad',painting:'812d696d2e69ab4ff2df4f3922424a8a',panda:'87caa226fbd49fd1750c7bc2991a1ff1',paper:'f5714a80dd7ba202daa5423ece6dd2c3',park:'ecf736abf700a33ad0fc1c6d83b5fea2',parking:'ff44a57c70d50f5ee6fa2ee92b910b59',party:'812fd7b920afd87419d877e0ae6a815f',passport:'0e9e0fba77afd91bafe7bbb50227ff8a',pencil:'89e10deaa8edca727d247ded627d3291',phone:'882fe67c9c6e5ad2faec1594d70fbe31',photo:'dd88d2f40c86e70575ba5e5e2fbe1c54',piano:'ef6cf94694e399a6186d0f05cb3ac13c',plane:'06e997ecf5dbecfe9e633cbfdb2cc7be',pool:'e1f53fcc2696fbfc7ac47685d2f188b9',postbox:'8b612d95e0b9bf557561c351c693d77f',postcard:'700b96decc967f333a72633b1fd259c4',postoffice:'24bf7d7ae5640b7f26f98438ac235b09',present:'585190fc8aa0b53d9e535016966d4a60',radio:'2f7a19e5ae5cf76c8dd6eeb2d4896e90',rain:'b0d52293642ef1aea24bed1727612467',ramen:'0b5263271ed2de938181566a25ab4050',researcher:'6316747432635249073e5789f874e486',restaurant:'b9a770c2912d23fdb21e0ddd21870744',river:'fd740e3bd3c4745fb57b86c54cca542b',robot:'8cb8fa32977ecaddaf6aa5490d8312c2',sakura:'40a7b3bf38a810fffac9f432c8dc5b47',salt:'48a8ee8ffcc7926d37db11477743c265',sandwich:'d6a0b2111d37ca82eef539f1ab1539e0',school:'170d95bdc250881686353928273e9d7c',scissors:'108cd4779d32ba6934f3856fab7a7476',sea:'4e8f776097e1f2a4114d8b89fe43ce3f',shinkansen:'0b5586a6c3e5a3cbe5cfd58c9d6da772',ship:'0bca646a24a51be880b51a023c342c2c',shoes:'9cb2f97f5288c148211a3f58e8e28649',shop:'204e489a01bec3f29914c7f25f6beaf7',shopping:'d2265a8214ba7b306daf92e41a5f91d4',shower:'7a827752c4419f1771e87baf643b806e',shrine:'f171fdfa35bf232d47240041914e53dc',signal:'fa3ba3c822027459d257f06964b4a4f0',ski:'300a2b9f9b7a0029f4fe994d65152625',skirt:'f37eb716f19e7260cfce959055c0ecd4',sleep:'f6d344fff81c9588988dd0f4af50e897',snow:'c617c789ea0e399b2216d41ff6d7c499',soccer:'479171c56ca91e5bb32f6bb92e463694',spoon:'8841d06a627a0c735f7f039be48a4d3e',sports:'7df1d436a566e7a12ffce445676442df',spring:'4111b6c7cfee06c6ed7c3e955c33075c',stairs:'74e6725379cb0dafd9418e24186bfd3a',stamp:'91da925b899453a201f209a01f42cffa',station:'ae7cdf765f6d8c3a2ba4ba4326d94f82',student:'cfad1f44e7be91913c77d77649a656e5',study:'bd1be485b86d7fdc0b945b46a03e5e8f',sugar:'d10fc3a8f958903924422c1931133f50',sukiyaki:'438e002a48e76289308d6a2d3aa96009',summer:'a70016b3b0c02949dbc4002775104da7',sumo:'ec387d6ad0c34ceb42f50c44577ff5fd',sunny:'ae21f4813d6bfa3d4b576882aed52ad7',supermarket:'5d6acfb8b9729a90068097f438dc8984',sushi:'d1c0223a1e362c5108f7a66db00df635',sweater:'e2e9603204605602f24400002fde31e5',swim:'d36cd4b27e34dc97ab477358ccb42e41',taxi:'e4bae72af2b61e1c4f79c0b12f12e441',tea:'f0d254173e4d22179377917313dfc760',teacher:'dfd49743f2021d6ad52d5bdd2b26eeae',temple:'0701d8532ad7052856152f55a8242b1f',tempura:'5a534b641b20b6d4a6a44974c2f03f1c',tennis:'87aec522e2cdf5848c80523c1f41c258',thermo:'e48073f0f5255db1b57207cc12f48952',ticket:'d74e127362e7a2d75b91e5f1079977d3',tie:'034dc4c91ca0594c0b0479e5ee31c0ce',tired:'b3764d22bef23a5194bcc27f6b92b913',toilet:'ad122fafb4ec78764d5fca99dd3c02ba',train:'9eebfd3307756e808839ec3d7ce93e56',travel:'0ea9d407002c8d97d3776bde2b3ff230',tree:'f97b22d6da8030f2f8294581b937dfb3',tv:'3e54055eb5dcbd5771108d897c2047cc',umbrella:'693ad0d2b5155f4b1c0c5a83d1444ad8',univ:'b4cb637291b035a43e5b448d5d681da2',vegetable:'58e0b21a09b11be617a8fea084a4493d',vending:'787834dff838006106b4fc61939a153b',wagashi:'7a42dfc168cefdedc01839c9d446f628',wakeup:'40660dccd755934f16400e36ae377ddc',walk:'6c53ac5b31c39d05d28de0f7fcd65c09',washer:'687244cfce31b2ae7128c7a274fa4030',watch:'f090e54c53cefa048e41d7742e49b0bd',window:'523009777352b76b8da48117aa70ceca',wine:'5be6694d320a042c978a6d90d2006185',winter:'222a34707fee8679127510def5e406e5',woman:'4bf35e3f285cfe7ab164fe862c1e926d',yen:'5f0fa7f833b11648127789e6eb787bff'};
+    const DEMO = { n: 1, p: 1, t: '初[はじ]めまして', ru: 'Пример шаблона: данные приходят из страницы урока', hero: 'teacher', ex: [
+      { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки.', bank: ['先生[せんせい]', '学生[がくせい]', '医者[いしゃ]', '会社員[かいしゃいん]'], items: [{ img: 'teacher', a: '先生[せんせい]' }, { img: 'student' }, { img: 'doctor' }, { img: 'office' }] }
+    ] };
+    const d = this.props.d || DEMO;
+    const accent = this.props.accent || '#C0392B';
+    const src = (n) => (n && IMG[n]) ? '/_blob/' + IMG[n] : '';
+    const J = (s) => {
+      const out = [];
+      if (s == null || s === '') return out;
+      s = String(s);
+      const re = /([々㐀-鿿豈-﫿]+)\[([^\]]+)\]|\(\(([^)]*)\)\)|_{2,}/g;
+      let last = 0, m;
+      while ((m = re.exec(s))) {
+        if (m.index > last) out.push({ t: s.slice(last, m.index), x: true });
+        if (m[1]) out.push({ t: m[1], r: m[2] });
+        else if (m[3] != null) out.push({ t: m[3], f: true });
+        else out.push({ t: '', b: true, w: m[0].length * 18 });
+        last = re.lastIndex;
+      }
+      if (last < s.length) out.push({ t: s.slice(last), x: true });
+      return out;
+    };
+    const POS = { ue: [57, 20], shita: [57, 62], hidari: [0, 60], migi: [114, 60] };
+    let no = d.start || 1;
+    const ex = (d.ex || []).map((e) => {
+      const items = e.items || [];
+      let k = 0;
+      const o = { no: no++, t: e.t || '', jt: e.jt || '', h: e.h || '', is: {}, cols: e.cols || 4 };
+      o.is[e.k] = true;
+      o.bank = (e.bank || []).map((w) => ({ s: J(w) }));
+      o.hasBank = o.bank.length > 0;
+      o.items = items.map((it) => {
+        const isEx = !!(it.a || it.pick != null);
+        if (!isEx) k++;
+        const r = { m: isEx ? '例' : k + '.', mc: isEx ? '#2E4A7A' : '#5A544C', img: src(it.img), hasImg: !!it.img, q: J(it.q), a: J(it.a), pre: J(it.pre), post: J(it.post), t: J(it.t), l: J(it.l), r: J(it.r) };
+        if (e.k === 'choose') {
+          const opts = it.o || [];
+          r.o = opts.map((x, j) => {
+            const on = it.pick === j;
+            return { s: J(x), bc: on ? '#2E4A7A' : 'transparent', c: on ? '#2E4A7A' : (it.pick != null ? '#9A938A' : '#1E1B18'), sep: j < opts.length - 1 };
+          });
+        }
+        if (e.k === 'order') r.w = (it.w || []).map((x) => ({ s: J(x) }));
+        if (e.k === 'clock') { const mi = it.mi || 0; r.ha = ((it.h || 0) % 12) * 30 + mi * 0.5; r.ma = mi * 6; }
+        if (e.k === 'count') {
+          const n = it.n || 1;
+          const sz = n <= 2 ? 50 : n <= 4 ? 38 : n <= 6 ? 30 : 25;
+          r.dots = Array.from({ length: n }, () => ({ u: src(it.img), sz: sz }));
+        }
+        if (e.k === 'pos') { const P = POS[it.p] || POS.ue; r.x = P[0]; r.y = P[1]; r.obj = src(e.obj); }
+        return r;
+      });
+      if (e.k === 'lines') {
+        o.hasEx = !!e.ex;
+        o.exq = e.ex ? J(e.ex.q) : [];
+        o.exa = e.ex ? J(e.ex.a) : [];
+        o.arrowCh = e.arrow ? '→' : '';
+        o.cards = (e.cards || []).map((c) => ({ img: src(c.img), top: J(c.top), name: J(c.name), sub: J(c.sub) }));
+        o.hasCards = o.cards.length > 0;
+        o.ccols = o.cards.length || 1;
+      }
+      if (e.k === 'write') { o.lines = (e.lines || []).map((s) => ({ s: J(s) })); o.pic = e.pic || ''; o.hasPic = !!e.pic; }
+      if (e.k === 'read') { o.text = (e.text || []).map((s) => ({ s: J(s) })); o.rimg = src(e.img); o.hasImg = !!e.img; }
+      if (e.k === 'pos') { o.base = src(e.base); o.sent = J(e.sent); }
+      if (e.k === 'table') {
+        const head = e.head || [];
+        o.tcols = head.length || 1;
+        const H = head.map((h) => ({ s: J(h), bg: '#F2ECDF', ff: "'Zen Maru Gothic', sans-serif", fw: 700, fs: 14, col: '#1E1B18' }));
+        const B = [];
+        (e.rows || []).forEach((row) => row.forEach((c) => B.push({ s: J(c || ''), bg: '#FFFFFF', ff: "'Klee One', serif", fw: 600, fs: 18, col: '#1E1B18' })));
+        o.cells = H.concat(B);
+      }
+      return o;
+    });
+    const memo = (d.memo || []).map((m) => ({ p: J(m.p), e: J(m.e), r: m.r || '' }));
+    return {
+      accent: accent,
+      n: d.n,
+      t: J(d.t),
+      ru: d.ru || '',
+      hero: src(d.hero),
+      hasHero: !!d.hero,
+      isP1: d.p === 1,
+      isP2: d.p !== 1,
+      memo: memo,
+      hasMemo: memo.length > 0,
+      ex: ex,
+      can: (d.can || []).map((c) => ({ s: J(c) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

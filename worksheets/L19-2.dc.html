@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第19課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 19, p: 2, start: 3,
+      t: 'ダイエットは あしたから します',
+      ex: [
+        { k: 'picqa', t: 'А ты пробовал?', jt: 'ことが ありますか', h: 'Ответь о себе: はい、あります。 / いいえ、ありません。',
+          items: [
+            { img: 'sumo', q: '相撲[すもう]を 見[み]た ことが ありますか。', a: 'はい、あります。' },
+            { img: 'fuji', q: '富士山[ふじさん]に 登[のぼ]った ことが ありますか。' },
+            { img: 'matcha', q: '日本[にほん]の お茶[ちゃ]を 習[なら]った ことが ありますか。' },
+            { img: 'horse', q: '馬[うま]に 乗[の]った ことが ありますか。' }
+          ] },
+        { k: 'lines', t: 'Чем ты занимаешься? ～たり、～たり', jt: 'たり', h: 'Соедини два действия, как в примере.', arrow: true,
+          ex: { q: '日曜日[にちようび] ／ 掃除[そうじ]します・洗濯[せんたく]します', a: '日曜日[にちようび]は 掃除[そうじ]したり、洗濯[せんたく]したり します。' },
+          items: [
+            { q: '休[やす]みの 日[ひ] ／ 本[ほん]を 読[よ]みます・音楽[おんがく]を 聞[き]きます' }
+          ] },
+        { k: 'choose', t: 'Обведи: く или に?', jt: 'なります', h: 'い-прил. → く なります, な-прил. и сущ. → に なります.',
+          items: [
+            { l: '寒[さむ]', o: ['く', 'に'], pick: 0, r: 'なりました。' },
+            { l: '元気[げんき]', o: ['に', 'く'], r: 'なりました。' },
+            { l: '来月[らいげつ] 12歳[さい]', o: ['に', 'く'], r: 'なります。' },
+            { l: 'だんだん 暑[あつ]', o: ['く', 'に'], r: 'なりますね。' }
+          ] }
+      ],
+      can: ['рассказать об опыте: ～た ことが あります', 'перечислять дела (～たり) и говорить об изменениях (なります)']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

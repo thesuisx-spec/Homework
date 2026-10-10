@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第12課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 12, p: 1,
+      t: '祇園祭[ぎおんまつり]は どうでしたか',
+      ru: 'Как это было? Прошедшее время и сравнение',
+      hero: 'festival',
+      memo: [
+        { p: 'Nでした ／ な-прил.でした', e: '昨日[きのう]は 雨[あめ]でした。', r: 'прошедшее: сущ. и な' },
+        { p: 'い-прил.かったです', e: '旅行[りょこう]は 楽[たの]しかったです。', r: 'прошедшее: い' },
+        { p: 'N₁は N₂より прил.', e: '東京[とうきょう]は 大阪[おおさか]より 大[おお]きいです。', r: 'N₁ более …, чем N₂' },
+        { p: 'N₁と N₂と どちらが', e: '肉[にく]と 魚[さかな]と どちらが 好[す]きですか。', r: 'что из двух?' },
+        { p: 'N₁の 中[なか]で 何[なに]が いちばん', e: 'スポーツの 中[なか]で 何[なに]が いちばん 好[す]きですか。', r: 'больше всего' }
+      ],
+      ex: [
+        { k: 'label', t: 'Времена года, погода и еда', jt: 'きせつ', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['春[はる]', '夏[なつ]', '秋[あき]', '冬[ふゆ]', 'すし', '天[てん]ぷら', '雨[あめ]', '雪[ゆき]'],
+          items: [{ img: 'spring', a: '春[はる]' }, { img: 'sushi' }, { img: 'winter' }, { img: 'rain' }, { img: 'summer' }, { img: 'tempura' }, { img: 'autumn' }, { img: 'snow' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'かこ・ひかく', h: 'い-прил. → かったです, な-прил. и сущ. → でした.',
+          items: [
+            { l: '昨日[きのう]は', o: ['暑[あつ]かったです', '暑[あつ]いでした'], pick: 0, r: '。' },
+            { l: '試験[しけん]は', o: ['簡単[かんたん]でした', '簡単[かんたん]かったです'], r: '。' },
+            { l: 'パーティーは あまり', o: ['楽[たの]しくなかったです', '楽[たの]しいじゃ ありませんでした'], r: '。' },
+            { l: '北海道[ほっかいどう]は 東京[とうきょう]', o: ['より', 'で'], r: '寒[さむ]いです。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第23課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 23, p: 2, start: 3,
+      t: 'どうやって 行[い]きますか',
+      ex: [
+        { k: 'read', t: 'Как пройти? Прочитай и отметь ○ или ×', jt: 'みちあんない', h: 'Правда — ○, неправда — ×.', img: 'map',
+          text: ['この 道[みち]を まっすぐ 行[い]って ください。', '2つ目[め]の 信号[しんごう]を 右[みぎ]へ 曲[ま]がって ください。', '橋[はし]を 渡[わた]ると、左[ひだり]に 郵便局[ゆうびんきょく]が あります。', '郵便局[ゆうびんきょく]の 隣[となり]が 私[わたし]の うちです。'],
+          items: [{ q: '1つ目[め]の 信号[しんごう]を 右[みぎ]へ 曲[ま]がります。' }, { q: '橋[はし]を 渡[わた]ります。' }, { q: '郵便局[ゆうびんきょく]は 橋[はし]の 前[まえ]に あります。' }] },
+        { k: 'picqa', t: 'Что будет? ～と、…', jt: 'どう なりますか', h: 'Закончи предложение: что произойдёт?',
+          items: [
+            { img: 'vending', q: 'お金[かね]を 入[い]れて、ボタンを 押[お]すと、', a: 'ジュースが 出[で]ます。' },
+            { img: 'light', q: 'この スイッチを 押[お]すと、' },
+            { img: 'kettle', q: 'この つまみを 回[まわ]すと、' },
+            { img: 'signal', q: '信号[しんごう]が 青[あお]に なると、' }
+          ] },
+        { k: 'lines', t: 'А ты? ～とき', jt: 'あなたは？', h: 'Закончи предложение о себе.',
+          items: [{ q: '暇[ひま]な とき、', pre: '' }] }
+      ],
+      can: ['объяснить дорогу: 渡ります・曲がります', 'сказать «когда…» (とき) и «если…, то» (と)']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

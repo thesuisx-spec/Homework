@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第13課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 13, p: 1,
+      t: '別々[べつべつ]に お願[ねが]いします',
+      ru: 'Чего я хочу и зачем иду',
+      hero: 'shopping',
+      memo: [
+        { p: 'Nが ほしいです', e: '新[あたら]しい 車[くるま]が ほしいです。', r: 'хочу (вещь)' },
+        { p: 'Vたいです', e: '沖縄[おきなわ]へ 行[い]きたいです。', r: 'хочу (сделать)' },
+        { p: '(место)へ Vに 行[い]きます', e: 'デパートへ 買[か]い物[もの]に 行[い]きます。', r: 'иду куда-то, чтобы …' },
+        { p: '何[なに]か ／ どこか', e: '何[なに]か 食[た]べたいです。', r: 'что-нибудь / куда-нибудь' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['プール', '川[かわ]', '釣[つ]り', 'スキー', 'お正月[しょうがつ]', '買[か]い物[もの]', '散歩[さんぽ]', '食事[しょくじ]'],
+          items: [{ img: 'ski', a: 'スキー' }, { img: 'river' }, { img: 'shopping' }, { img: 'kadomatsu' }, { img: 'pool' }, { img: 'restaurant' }, { img: 'fishing' }, { img: 'walk' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'ほしい・たい', h: 'ほしい — вещь (が), ～たい — действие.',
+          items: [
+            { l: '私[わたし]は カメラが', o: ['ほしいです', '撮[と]りたいです'], pick: 0, r: '。' },
+            { l: '冷[つめ]たい ビールを', o: ['飲[の]みたいです', 'ほしいです'], r: '。' },
+            { l: '京都[きょうと]へ 写真[しゃしん]を 撮[と]り', o: ['に', 'で'], r: '行[い]きます。' },
+            { l: '日曜日[にちようび] どこ', o: ['か', 'も'], r: '行[い]きましたか。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

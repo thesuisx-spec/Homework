@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第22課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 22, p: 1,
+      t: 'どんな アパートが いいですか',
+      ru: 'Определительные предложения: человек, который…',
+      hero: 'p_glasses',
+      memo: [
+        { p: 'простая форма + N', e: 'これは 父[ちち]が 撮[と]った 写真[しゃしん]です。', r: 'N, который …' },
+        { p: 'Vて いる 人[ひと]', e: '眼鏡[めがね]を かけて いる 人[ひと]は だれですか。', r: 'человек, который … (сейчас)' },
+        { p: 'Vる 時間[じかん]／約束[やくそく]／用事[ようじ]', e: '朝[あさ]ごはんを 食[た]べる 時間[じかん]が ありません。', r: 'время, чтобы …' }
+      ],
+      ex: [
+        { k: 'label', t: 'Одежда и вещи: подпиши', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['帽子[ぼうし]', '眼鏡[めがね]', 'コート', 'セーター', 'ネクタイ', 'ケーキ', '弁当[べんとう]', 'ロボット'],
+          items: [{ img: 'hat', a: '帽子[ぼうし]' }, { img: 'cake' }, { img: 'glasses' }, { img: 'robot' }, { img: 'sweater' }, { img: 'bento' }, { img: 'tie' }, { img: 'coat' }] },
+        { k: 'picqa', t: 'Какой это человек?', jt: 'どの ひと', h: 'Опиши человека: …を …て いる 人です。',
+          items: [
+            { img: 'p_glasses', q: 'この 人[ひと]は どんな 人[ひと]ですか。', a: '眼鏡[めがね]を かけて いる 人[ひと]です。' },
+            { img: 'p_hat', q: 'この 人[ひと]は どんな 人[ひと]ですか。' },
+            { img: 'p_suit', q: 'この 人[ひと]は どんな 人[ひと]ですか。' },
+            { img: 'p_kimono', q: 'この 人[ひと]は どんな 人[ひと]ですか。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

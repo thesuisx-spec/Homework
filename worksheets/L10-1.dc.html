@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第10課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 10, p: 1,
+      t: 'ナンプラー、ありますか',
+      ru: 'Что где находится: あります и います',
+      hero: 'cat',
+      memo: [
+        { p: 'あります ／ います', e: '机[つくえ]が あります。猫[ねこ]が います。', r: 'есть: предметы / живые' },
+        { p: '(место)に Nが あります', e: '公園[こうえん]に 木[き]が あります。', r: 'в … есть N' },
+        { p: 'Nは (место)に います', e: '猫[ねこ]は 机[つくえ]の 上[うえ]に います。', r: 'N находится в …' },
+        { p: 'N₁の 上[うえ]・下[した]・右[みぎ]・左[ひだり]', e: '箱[はこ]の 中[なか]・ドアの 前[まえ]', r: 'на, под, справа, слева…' },
+        { p: 'N₁や N₂', e: '本[ほん]や ノートが あります。', r: '… и … (и другие)' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['猫[ねこ]', '犬[いぬ]', 'パンダ', '象[ぞう]', '木[き]', '箱[はこ]', 'ポスト', '冷蔵庫[れいぞうこ]'],
+          items: [{ img: 'cat', a: '猫[ねこ]' }, { img: 'box' }, { img: 'elephant' }, { img: 'fridge' }, { img: 'dog' }, { img: 'postbox' }, { img: 'tree' }, { img: 'panda' }] },
+        { k: 'pos', t: 'Где кошка?', jt: 'どこに いますか', h: 'Посмотри на картинку и напиши слово-место.',
+          base: 'desk', obj: 'cat', sent: '猫[ねこ]は 机[つくえ]の ____ に います。',
+          items: [{ p: 'ue', a: '上[うえ]' }, { p: 'shita' }, { p: 'hidari' }, { p: 'migi' }] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

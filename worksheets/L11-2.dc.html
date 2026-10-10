@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第11課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 11, p: 2, start: 3,
+      t: 'これ、お願[ねが]いします',
+      ex: [
+        { k: 'count', t: 'Сколько? Люди, билеты, машины', jt: 'なんにん・なんまい', h: 'Помни: ひとり, ふたり, さんにん…',
+          items: [{ img: 'girl', n: 1, a: 'ひとり' }, { img: 'boy', n: 2 }, { img: 'ticket', n: 6 }, { img: 'car', n: 3 }] },
+        { k: 'fill', t: 'Вставь счётное слово', jt: 'じょすうし', h: 'Выбери из рамки: まい・つ・にん・だい・かい.',
+          bank: ['枚[まい]', 'つ', '人[にん]', '台[だい]', '回[かい]'],
+          items: [
+            { a: 1, t: '80円[えん]の 切手[きって]を 5((まい)) ください。' },
+            { t: 'りんごを 3___ 買[か]いました。' },
+            { t: '教室[きょうしつ]に 学生[がくせい]が 10___ います。' },
+            { t: 'うちに 車[くるま]が 2___ あります。' },
+            { t: '1か月[げつ]に 2___ 映画[えいが]を 見[み]ます。' }
+          ] },
+        { k: 'lines', t: 'А ты? Ответь о себе', jt: 'あなたは？', h: 'Ответь полным предложением.',
+          items: [
+            { q: 'ご家族[かぞく]は 何人[なんにん]ですか。' },
+            { q: '1日[にち]に 何時間[なんじかん] 寝[ね]ますか。' },
+            { q: '1週間[しゅうかん]に 何回[なんかい] 日本語[にほんご]を 勉強[べんきょう]しますか。' }
+          ] }
+      ],
+      can: ['считать предметы и людей со счётными словами', 'сказать, как долго и как часто']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

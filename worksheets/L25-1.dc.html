@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第25課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 25, p: 1,
+      t: 'いろいろ お世話[せわ]に なりました',
+      ru: 'Если…, когда…, даже если…',
+      hero: 'plane',
+      memo: [
+        { p: 'прошедшая форма + ら', e: '雨[あめ]が 降[ふ]ったら、行[い]きません。', r: 'если …' },
+        { p: 'Vたら (когда)', e: '10時[じ]に なったら、出[で]かけましょう。', r: 'когда (наступит)' },
+        { p: 'Vても ／ い-прил.くても', e: '雨[あめ]が 降[ふ]っても、行[い]きます。', r: 'даже если' },
+        { p: 'もし ～たら ／ いくら ～ても', e: 'もし 1億円[おくえん] あったら、旅行[りょこう]したいです。', r: 'если бы / сколько ни' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['田舎[いなか]', '宝[たから]くじ', '飛行機[ひこうき]', 'お金[かね]', '旅行[りょこう]', '雨[あめ]', 'ケーキ', '空港[くうこう]'],
+          items: [{ img: 'countryside', a: '田舎[いなか]' }, { img: 'money' }, { img: 'airport' }, { img: 'lottery' }, { img: 'cake' }, { img: 'plane' }, { img: 'rain' }, { img: 'travel' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'たら・ても', h: 'たら — если/когда, ても — даже если.',
+          items: [
+            { l: '雨[あめ]が', o: ['降[ふ]ったら', '降[ふ]りたら'], pick: 0, r: '、出[で]かけません。' },
+            { l: '安[やす]', o: ['かったら', 'いたら'], r: '、買[か]います。' },
+            { l: '暇[ひま]', o: ['だったら', 'かったら'], r: '、遊[あそ]びに 来[き]て ください。' },
+            { l: 'いくら 考[かんが]えて', o: ['も', 'たら'], r: '、わかりません。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

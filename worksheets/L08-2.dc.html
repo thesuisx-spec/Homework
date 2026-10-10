@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第8課 — стр. 2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 8, p: 2, start: 3,
+      t: 'そろそろ 失礼[しつれい]します',
+      ex: [
+        { k: 'table', t: 'Сделай отрицание', jt: 'ひてい', h: 'Осторожно: いい → よくないです!',
+          head: ['～です', '～じゃ ありません ／ ～くないです'],
+          rows: [
+            ['静[しず]かです', '((しずかじゃ ありません))'],
+            ['高[たか]いです', '((たかくないです))'],
+            ['きれいです', ''],
+            ['寒[さむ]いです', ''],
+            ['元気[げんき]です', ''],
+            ['いいです', '']
+          ] },
+        { k: 'picqa', t: 'Какой? どんな', jt: 'どんな', h: 'Ответь полным предложением.',
+          items: [
+            { img: 'fuji', q: '富士山[ふじさん]は どんな 山[やま]ですか。', a: '高[たか]い 山[やま]です。' },
+            { img: 'city', q: '東京[とうきょう]は どんな 町[まち]ですか。' },
+            { img: 'temple', q: 'この お寺[てら]は 新[あたら]しいですか。' },
+            { img: 'ramen', q: 'ラーメンは どうですか。' }
+          ] },
+        { k: 'lines', t: 'А у тебя?', jt: 'あなたは？', h: 'Ответь полным предложением.',
+          items: [
+            { q: 'あなたの 町[まち]は どんな 町[まち]ですか。' },
+            { q: '日本語[にほんご]の 勉強[べんきょう]は どうですか。' }
+          ] }
+      ],
+      can: ['описывать предметы и места прилагательными', 'строить отрицание: ～くないです / ～じゃ ありません']
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

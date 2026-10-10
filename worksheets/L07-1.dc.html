@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第7課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 7, p: 1,
+      t: 'ごめんください',
+      ru: 'Чем мы что-то делаем. Подарки: дарю и получаю',
+      hero: 'present',
+      memo: [
+        { p: 'N(инструмент)で', e: 'はしで 食[た]べます。', r: 'чем? (инструмент)' },
+        { p: '「～」は ～語[ご]で 何[なん]ですか', e: '「Thank you」は 日本語[にほんご]で 何[なん]ですか。', r: 'как будет по-…?' },
+        { p: 'N(чел.)に あげます', e: '母[はは]に 花[はな]を あげます。', r: 'дарю / даю кому-то' },
+        { p: 'N(чел.)に もらいます', e: '父[ちち]に 時計[とけい]を もらいました。', r: 'получаю от кого-то' },
+        { p: 'もう Vました', e: 'もう 昼[ひる]ごはんを 食[た]べました。', r: 'уже сделал' }
+      ],
+      ex: [
+        { k: 'label', t: 'Предметы: подпиши', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['はし', 'スプーン', 'はさみ', '花[はな]', 'プレゼント', '年賀状[ねんがじょう]', '切符[きっぷ]', 'お金[かね]'],
+          items: [{ img: 'hashi', a: 'はし' }, { img: 'present' }, { img: 'ticket' }, { img: 'scissors' }, { img: 'money' }, { img: 'flower' }, { img: 'nengajo' }, { img: 'spoon' }] },
+        { k: 'choose', t: 'Обведи правильный вариант', jt: 'じょし', h: 'で — чем, に — кому / от кого, を — что.',
+          items: [
+            { l: 'はし', o: ['で', 'に'], pick: 0, r: 'ご飯[はん]を 食[た]べます。' },
+            { l: '私[わたし]は 木村[きむら]さん', o: ['に', 'で'], r: '花[はな]を あげました。' },
+            { l: 'はさみ', o: ['で', 'を'], r: '紙[かみ]を 切[き]ります。' },
+            { l: 'もう レポートを 書[か]きましたか。…いいえ、', o: ['まだです', 'もう 書[か]きました'], r: '。' }
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>

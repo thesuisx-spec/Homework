@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>第19課 — стр. 1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&amp;family=Zen+Maru+Gothic:wght@500;700;900&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBF8F1}
+</style>
+</helmet>
+<dc-import name="Sheet" d="{{d}}" accent="{{accent}}" hint-size="794px,1123px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C0392B","options":["#C0392B","#2E4A7A","#2F7D5B","#B5651D"]},"$preview":{"width":794,"height":1123}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const d = {
+      n: 19, p: 1,
+      t: 'ダイエットは あしたから します',
+      ru: 'た-форма: опыт, перечисление дел и изменения',
+      hero: 'sumo',
+      memo: [
+        { p: 'Vた ことが あります', e: '馬[うま]に 乗[の]った ことが あります。', r: 'есть опыт: когда-то делал' },
+        { p: 'Vたり、Vたり します', e: 'テニスを したり、散歩[さんぽ]したり します。', r: 'делаю то …, то …' },
+        { p: 'い-прил.く なります', e: '寒[さむ]く なりました。', r: 'стало (い)' },
+        { p: 'な-прил.／Nに なります', e: '元気[げんき]に なりました。', r: 'стало (な / сущ.)' }
+      ],
+      ex: [
+        { k: 'label', t: 'Подпиши картинки', jt: 'ことば', h: 'Выбери слово из рамки и напиши его под картинкой.',
+          bank: ['相撲[すもう]', 'お茶[ちゃ]', '山[やま]', 'ゴルフ', '掃除[そうじ]', '洗濯[せんたく]', 'ホテル', '眠[ねむ]い'],
+          items: [{ img: 'sumo', a: '相撲[すもう]' }, { img: 'washer' }, { img: 'golf' }, { img: 'hotel' }, { img: 'matcha' }, { img: 'sleep' }, { img: 'cleaning' }, { img: 'climb' }] },
+        { k: 'table', t: 'Образуй た-форму', jt: 'たけい', h: 'Как て-форма, только вместо て — た.',
+          head: ['ます', 'た'],
+          rows: [
+            ['行[い]きます', '((いった))'],
+            ['登[のぼ]ります', ''],
+            ['見[み]ます', ''],
+            ['泊[と]まります', ''],
+            ['します', '']
+          ] }
+      ]
+    };
+    return { accent: this.props.accent ?? '#C0392B', d: d };
+  }
+}
+</script>
+</body>
+</html>
