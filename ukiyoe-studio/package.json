@@ -1,7 +1,7 @@
 {
   "name": "ukiyoe-studio",
   "productName": "Ukiyo-e Studio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Офлайн-студия фильмов в стиле укиё-э",
   "main": "main.js",
   "license": "SEE LICENSE IN NOTICE.md",
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "electron .",
     "dist:linux": "electron-builder --linux AppImage --publish never",
-    "dist:win": "electron-builder --win nsis portable --publish never",
+    "dist:win": "electron-builder --win --x64 --ia32 --publish never",
     "dist:mac": "electron-builder --mac dmg --publish never"
   },
   "dependencies": {
