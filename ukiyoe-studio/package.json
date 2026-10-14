@@ -9,7 +9,7 @@
   "scripts": {
     "start": "electron .",
     "dist:linux": "electron-builder --linux AppImage --publish never",
-    "dist:win": "electron-builder --win portable zip --publish never",
+    "dist:win": "electron-builder --win nsis portable --publish never",
     "dist:mac": "electron-builder --mac dmg --publish never"
   },
   "dependencies": {
@@ -41,12 +41,13 @@
         "AppImage"
       ],
       "category": "Graphics",
-      "icon": "build/icon.png"
+      "icon": "build/icon.png",
+      "artifactName": "UkiyoeStudio-${version}-linux.${ext}"
     },
     "win": {
       "target": [
-        "portable",
-        "zip"
+        "nsis",
+        "portable"
       ],
       "icon": "build/icon.png",
       "signAndEditExecutable": false
@@ -56,8 +57,27 @@
         "dmg"
       ],
       "icon": "build/icon.png",
-      "category": "public.app-category.graphics-design"
+      "category": "public.app-category.graphics-design",
+      "artifactName": "UkiyoeStudio-${version}-mac.${ext}"
     },
-    "publish": null
+    "publish": null,
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Ukiyo-e Studio",
+      "artifactName": "UkiyoeStudio-Setup-${version}.${ext}",
+      "installerLanguages": [
+        "ru_RU"
+      ],
+      "language": "1049",
+      "uninstallDisplayName": "Ukiyo-e Studio",
+      "runAfterFinish": true
+    },
+    "portable": {
+      "artifactName": "UkiyoeStudio-Portable-${version}.${ext}"
+    }
   }
 }

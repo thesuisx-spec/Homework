@@ -3,9 +3,13 @@ name: "Ukiyo-e Studio: сборка"
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "ukiyoe-studio/**"
-      - ".github/workflows/ukiyoe-studio.yml"
+    branches:
+      - "claude/tokyo-ukiyoe-film"
+    tags:
+      - "studio-v*"
+
+permissions:
+  contents: write # publishing the installers to a GitHub Release
 
 jobs:
   build:
@@ -17,7 +21,6 @@ jobs:
             script: dist:win
             files: |
               ukiyoe-studio/dist/*.exe
-              ukiyoe-studio/dist/*.zip
           - os: macos-latest
             script: dist:mac
             files: ukiyoe-studio/dist/*.dmg
@@ -45,3 +48,25 @@ jobs:
           path: ${{ matrix.files }}
           if-no-files-found: error
           retention-days: 30
+      - name: Выложить в Releases
+        if: startsWith(github.ref, 'refs/tags/studio-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Ukiyo-e Studio ${{ github.ref_name }}
+          files: ${{ matrix.files }}
+          body: |
+            **Ukiyo-e Studio** — офлайн-программа для фильмов в стиле японской гравюры укиё-э.
+
+            ### Windows
+            Скачайте **UkiyoeStudio-Setup-…exe**, запустите и пройдите установку: появятся ярлыки на рабочем столе и в меню «Пуск».
+            Программа не подписана сертификатом, поэтому Windows может показать окно «Система Windows защитила ваш компьютер».
+            Нажмите **«Подробнее» → «Выполнить в любом случае»**.
+            Без установки можно запустить **UkiyoeStudio-Portable-…exe**.
+
+            ### macOS
+            Откройте `.dmg` и перетащите программу в «Программы». В первый раз запускайте её правой кнопкой мыши → «Открыть».
+
+            ### Linux
+            Скачайте `.AppImage`, выполните `chmod +x`, затем запустите.
+
+            Интернет программе не нужен.
