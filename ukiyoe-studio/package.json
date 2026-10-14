@@ -1,7 +1,7 @@
 {
   "name": "ukiyoe-studio",
   "productName": "Ukiyo-e Studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Офлайн-студия фильмов в стиле укиё-э",
   "main": "main.js",
   "license": "SEE LICENSE IN NOTICE.md",
@@ -46,8 +46,20 @@
     },
     "win": {
       "target": [
-        "nsis",
-        "portable"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
       ],
       "icon": "build/icon.png",
       "signAndEditExecutable": false
