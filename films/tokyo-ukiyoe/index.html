@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Пять видов Токио</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Shippori Mincho"; src: url("assets/fonts/ShipporiMincho-Medium.ttf") format("truetype"); font-weight: 400; }
+      @font-face { font-family: "Shippori Mincho B"; src: url("assets/fonts/ShipporiMincho-Bold.ttf") format("truetype"); font-weight: 400; }
+      @font-face { font-family: "Yuji Syuku"; src: url("assets/fonts/YujiSyuku-Regular.ttf") format("truetype"); }
+      @font-face { font-family: "PT Serif"; src: url("assets/fonts/PT_Serif-Web-Regular.ttf") format("truetype"); font-style: normal; }
+      @font-face { font-family: "PT Serif"; src: url("assets/fonts/PT_Serif-Web-Italic.ttf") format("truetype"); font-style: italic; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #c2ad86; }
+      #root { position: relative; width: 1920px; height: 1080px; }
+      #film { position: absolute; inset: 0; width: 1920px; height: 1080px; display: block; }
+      /* keeps every face in use so document.fonts.ready covers them */
+      #fontwarm { position: absolute; left: -9999px; top: 0; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="50" data-width="1920" data-height="1080">
+      <canvas id="film" class="clip" width="1920" height="1080" data-start="0" data-duration="50" data-track-index="0"></canvas>
+      <audio id="score" class="clip" src="assets/audio/score.wav" data-start="0" data-duration="50" data-track-index="1" data-volume="1"></audio>
+      <div id="fontwarm">
+        <span style="font-family: 'Shippori Mincho'">東京</span>
+        <span style="font-family: 'Shippori Mincho B'">雷門雨東京景五</span>
+        <span style="font-family: 'Yuji Syuku'">湾の暁目黒川桜渋谷夕立浅草灯夜</span>
+        <span style="font-family: 'PT Serif'">Город</span>
+        <span style="font-family: 'PT Serif'; font-style: italic">Пять</span>
+      </div>
+    </div>
+    <script src="assets/js/print.js"></script>
+    <script src="assets/js/views.js"></script>
+    <script src="assets/js/film.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const faces = [
+        ['400 40px "Shippori Mincho"', "東京"],
+        ['400 40px "Shippori Mincho B"', "雷門雨東京景五"],
+        ['40px "Yuji Syuku"', "湾の暁目黒川桜渋谷夕立浅草灯夜東京"],
+        ['40px "PT Serif"', "Город"],
+        ['italic 40px "PT Serif"', "Пять"],
+      ];
+      Promise.all(faces.map(([f, s]) => document.fonts.load(f, s)))
+        .then(() => document.fonts.ready)
+        .then(() => {
+          FILM.build();
+          const out = document.getElementById("film");
+          const state = { t: 0 };
+          const tl = gsap.timeline({ paused: true });
+          tl.to(state, { t: FILM.DUR, duration: FILM.DUR, ease: "none", onUpdate: () => FILM.draw(state.t, out) }, 0);
+          FILM.draw(0, out);
+          window.__timelines["main"] = tl;
+        });
+    </script>
+  </body>
+</html>
