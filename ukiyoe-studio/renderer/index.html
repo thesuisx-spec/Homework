@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'" />
+    <title>Ukiyo-e Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <span class="seal" aria-hidden="true">景</span>
+        <div>
+          <h1>Ukiyo-e Studio</h1>
+          <p>фильмы-гравюры одним дублем</p>
+        </div>
+      </div>
+      <nav class="actions">
+        <button id="btnNew" class="ghost">Новый</button>
+        <button id="btnOpen" class="ghost">Открыть…</button>
+        <button id="btnSave" class="ghost">Сохранить…</button>
+        <button id="btnExport" class="primary">Экспорт MP4</button>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <aside class="side">
+        <section class="panel">
+          <h2>Фильм</h2>
+          <label>Название серии <small>(на табличке гравюры, до 5 знаков)</small>
+            <input id="fSeries" maxlength="5" />
+          </label>
+          <label>Финальная надпись <small>(вертикальная табличка)</small>
+            <input id="fEndTitle" maxlength="9" />
+          </label>
+          <label>Финальная строка <small>(под табличкой)</small>
+            <input id="fEndLine" maxlength="60" />
+          </label>
+          <label class="check"><input type="checkbox" id="fTraveler" /> Путник идёт через все виды</label>
+        </section>
+
+        <section class="panel">
+          <div class="row-between">
+            <h2>Сцены</h2>
+            <span id="total" class="muted"></span>
+          </div>
+          <ol id="scenes" class="scenes"></ol>
+          <div class="add">
+            <select id="addView" aria-label="Вид для новой сцены"></select>
+            <button id="btnAdd">Добавить сцену</button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="stage">
+        <div class="screen">
+          <canvas id="view" width="1920" height="1080"></canvas>
+          <div id="busy" class="busy" hidden></div>
+        </div>
+        <div class="transport">
+          <button id="btnPlay" class="round" aria-label="Смотреть">▶</button>
+          <input id="scrub" type="range" min="0" max="1000" value="0" step="1" aria-label="Время" />
+          <span id="time" class="time">0:00 / 0:00</span>
+        </div>
+        <p class="hint">Всё работает без интернета. Если подряд стоят две сцены одного вида с разным временем суток, вторая отпечатается заново поверх тех же линий — как альтернативный оттиск у мастеров Эдо.</p>
+      </section>
+    </main>
+
+    <dialog id="exportDlg">
+      <form method="dialog" class="dlg">
+        <h2>Экспорт фильма</h2>
+        <fieldset id="sizeSet">
+          <legend>Размер</legend>
+          <label class="check"><input type="radio" name="size" value="1080" checked /> 1920 × 1080 (Full HD)</label>
+          <label class="check"><input type="radio" name="size" value="720" /> 1280 × 720 (быстрее)</label>
+        </fieldset>
+        <div id="exportProgress" hidden>
+          <progress id="exportBar" max="1" value="0"></progress>
+          <p id="exportStage" class="muted"></p>
+        </div>
+        <p id="exportResult"></p>
+        <div class="dlg-actions">
+          <button id="btnExportCancel" value="cancel" class="ghost">Закрыть</button>
+          <button id="btnExportGo" class="primary" type="button">Выбрать файл и начать</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="fontwarm" aria-hidden="true">
+      <span style="font-family: 'Shippori Mincho'">東京</span><span style="font-family: 'Shippori Mincho B'">東京</span>
+      <span style="font-family: 'Yuji Syuku'">東京</span><span style="font-family: 'PT Serif'">Токио</span><span style="font-family: 'PT Serif'; font-style: italic">Токио</span>
+    </div>
+
+    <script src="vendor/mp4-muxer.js"></script>
+    <script src="engine/print.js"></script>
+    <script src="engine/views.js"></script>
+    <script src="engine/traveler.js"></script>
+    <script src="engine/film.js"></script>
+    <script src="engine/audio.js"></script>
+    <script src="export.js"></script>
+    <script src="editor.js"></script>
+  </body>
+</html>

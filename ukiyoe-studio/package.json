@@ -1,0 +1,63 @@
+{
+  "name": "ukiyoe-studio",
+  "productName": "Ukiyo-e Studio",
+  "version": "1.0.0",
+  "description": "Офлайн-студия фильмов в стиле укиё-э",
+  "main": "main.js",
+  "license": "SEE LICENSE IN NOTICE.md",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:linux": "electron-builder --linux AppImage --publish never",
+    "dist:win": "electron-builder --win portable zip --publish never",
+    "dist:mac": "electron-builder --mac dmg --publish never"
+  },
+  "dependencies": {
+    "mp4-muxer": "5.2.2"
+  },
+  "devDependencies": {
+    "electron": "44.7.2",
+    "electron-builder": "26.0.12"
+  },
+  "author": "Ukiyo-e Studio",
+  "build": {
+    "appId": "local.ukiyoe.studio",
+    "productName": "Ukiyo-e Studio",
+    "copyright": "Некоммерческое использование",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "build/icon.png",
+      "LICENSE*",
+      "NOTICE.md"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Graphics",
+      "icon": "build/icon.png"
+    },
+    "win": {
+      "target": [
+        "portable",
+        "zip"
+      ],
+      "icon": "build/icon.png",
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.graphics-design"
+    },
+    "publish": null
+  }
+}

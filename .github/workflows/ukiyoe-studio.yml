@@ -1,0 +1,47 @@
+name: "Ukiyo-e Studio: сборка"
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "ukiyoe-studio/**"
+      - ".github/workflows/ukiyoe-studio.yml"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            script: dist:win
+            files: |
+              ukiyoe-studio/dist/*.exe
+              ukiyoe-studio/dist/*.zip
+          - os: macos-latest
+            script: dist:mac
+            files: ukiyoe-studio/dist/*.dmg
+          - os: ubuntu-latest
+            script: dist:linux
+            files: ukiyoe-studio/dist/*.AppImage
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ukiyoe-studio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ukiyoe-studio/package-lock.json
+      - run: npm ci
+      - run: npm run ${{ matrix.script }}
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ukiyoe-studio-${{ runner.os }}
+          path: ${{ matrix.files }}
+          if-no-files-found: error
+          retention-days: 30
