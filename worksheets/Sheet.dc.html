@@ -54,7 +54,7 @@ body{margin:0}
         <span style="font-size: 12px; color: #5A544C">прочитай вслух перед заданиями</span>
       </div>
       <sc-for list="{{memo}}" as="mr" hint-placeholder-count="4">
-        <div style="display: grid; grid-template-columns: 210px minmax(0, 1fr) 160px; column-gap: 14px; align-items: center; border-bottom: 1px dashed #CFC6B4; min-height: 34px">
+        <div style="display: grid; grid-template-columns: 190px minmax(0, 1fr) 140px; column-gap: 14px; align-items: center; border-bottom: 1px dashed #CFC6B4; min-height: 34px">
           <div style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 14px; line-height: 2.1"><sc-for list="{{mr.p}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
           <div style="font-family: 'Klee One', serif; font-size: 17px; font-weight: 600; line-height: 2.1"><sc-for list="{{mr.e}}" as="s" hint-placeholder-count="3"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
           <div style="font-size: 12.5px; color: #5A544C; line-height: 1.3">{{mr.r}}</div>
@@ -120,7 +120,7 @@ body{margin:0}
                   <img src="{{c.img}}" alt="" style="width: 48px; height: 48px; object-fit: contain; flex: none">
                   <div style="display: flex; flex-direction: column; min-width: 0; line-height: 1.75">
                     <div style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 11px; font-weight: 700; color: #5A544C"><sc-for list="{{c.top}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-size: 0.6em; font-weight: 500">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
-                    <div style="font-size: 17px"><sc-for list="{{c.name}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
+                    <div style="font-size: 15px"><sc-for list="{{c.name}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
                     <div style="font-size: 14px; color: #3A352F"><sc-for list="{{c.sub}}" as="s" hint-placeholder-count="1"><sc-if value="{{s.r}}" hint-placeholder-val="{{false}}"><ruby>{{s.t}}<rt style="font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.5em; font-weight: 500; color: #6B655C">{{s.r}}</rt></ruby></sc-if><sc-if value="{{s.x}}" hint-placeholder-val="{{true}}"><span>{{s.t}}</span></sc-if></sc-for></div>
                   </div>
                 </div>
